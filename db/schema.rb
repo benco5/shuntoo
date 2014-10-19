@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141017234206) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "questions", force: true do |t|
     t.text     "content"
     t.datetime "created_at"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20141017234206) do
     t.integer  "suite_id"
   end
 
-  add_index "questions", ["suite_id"], name: "index_questions_on_suite_id"
+  add_index "questions", ["suite_id"], name: "index_questions_on_suite_id", using: :btree
 
   create_table "suites", force: true do |t|
     t.string   "title"

@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class QuestionTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "content must not be empty" do
+    question = Question.new
+    assert question.invalid?
+    assert question.errors[:content].any?
+  end
 end
