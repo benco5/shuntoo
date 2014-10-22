@@ -1,7 +1,9 @@
 class Question < ActiveRecord::Base
+  belongs_to :question_set
+  
   validates :content, presence: true
 
-  belongs_to :suite
+  
 
   
 end

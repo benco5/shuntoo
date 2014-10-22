@@ -11,24 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017234206) do
+ActiveRecord::Schema.define(version: 20141022133643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "question_sets", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "questions", force: true do |t|
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "suite_id"
+    t.integer  "question_set_id"
   end
 
-  add_index "questions", ["suite_id"], name: "index_questions_on_suite_id", using: :btree
-
-  create_table "suites", force: true do |t|
-    t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "questions", ["question_set_id"], name: "index_questions_on_question_set_id", using: :btree
 
 end

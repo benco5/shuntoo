@@ -1,11 +1,12 @@
 Shuntoo::Application.routes.draw do
+  resources :question_sets
+  resources :questions
+
   root   'static_pages#home'
   match  '/about', to: 'static_pages#about', via: 'get'
   match  '/help', to: 'static_pages#help', via: 'get'
 
-  resources :questions
-  resources :suites
-
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
