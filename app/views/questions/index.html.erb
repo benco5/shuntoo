@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Question Set</th>
       <th>Content</th>
       <th></th>
       <th></th>
@@ -13,6 +14,7 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
+        <td><%= question.question_set.title %></td>
         <td><%= question.content %></td>
         <td><%= link_to 'Show', question %></td>
         <td><%= link_to 'Edit', edit_question_path(question) %></td>

@@ -25,9 +25,9 @@ class QuestionSetsController < ApplicationController
   # POST /question_sets.json
   def create
     @question_set = QuestionSet.new(question_set_params)
-
     respond_to do |format|
       if @question_set.save
+        session[:question_set_id] = @question_set.id
         format.html { redirect_to @question_set, notice: 'Question set was successfully created.' }
         format.json { render action: 'show', status: :created, location: @question_set }
       else
@@ -65,6 +65,7 @@ class QuestionSetsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_question_set
       @question_set = QuestionSet.find(params[:id])
+      session[:question_set_id] = @question_set.id
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,6 +1,9 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
+
+
+
   # GET /questions
   # GET /questions.json
   def index
@@ -24,8 +27,11 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params)
-
+    if @question_set = QuestionSet.find(session[:question_set_id])
+      @question = @question_set.questions.build(question_params)
+    else
+      @question = Question.new(question_params)
+    end
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
