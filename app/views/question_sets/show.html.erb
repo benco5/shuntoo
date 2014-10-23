@@ -6,12 +6,8 @@
     <%= @question_set.title %>
   </p>
 
-  <ul>
-    <% @question_set.questions.each do |question| %>
-      <li><%= question.content %></li>
-    <% end %>
-  </ul>
-
+    <%= render 'shared/list_objects', objects: @question_set.questions,
+    display_attr: 'content' %>
 
   <%= button_to 'Add a Question', new_question_path, method: 'get', :form => { :id => 'add_a_question' } %>
 

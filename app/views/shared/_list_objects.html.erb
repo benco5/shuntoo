@@ -1,0 +1,9 @@
+<ul>
+  <% objects.each do |object| %>
+    <li>
+      <%= object["#{display_attr}"] %>
+      <%= render 'shared/edit_object', object: object %>
+      <%= render 'shared/delete_object', object: object %>
+    </li>
+  <% end %>
+</ul>

@@ -1,29 +1,10 @@
-<h1>Listing questions</h1>
+<h1>Question Pool</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Question Set</th>
-      <th>Content</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="center">
 
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.question_set.title %></td>
-        <td><%= question.content %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <%= render 'shared/list_objects', objects: @questions,
+    display_attr: 'content' %>
 
-<br>
-
-<%= link_to 'New Question', new_question_path %>
+  <br>
+  <%#= link_to 'New Question', new_question_path %>
+</div>

@@ -13,7 +13,7 @@ $white:       #fff;
 html {
   height: 100%;
   overflow-y: scroll;
-  background-color: $white;
+  background-color: #3399FF;
 }
 
 /* universal */
@@ -36,9 +36,18 @@ textarea {
   width: 50%;
   text-align: center;
   padding: 10px;
-  border: 2px solid red;
   margin: auto;
   align: center;
+  border-radius: 10px;
+  background-color: $grayLight;
+  li {
+    background-color: $white;
+    border: 1px solid $gray;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+    list-style: none;
+  }
 }
 
 /* typography */
@@ -177,15 +186,15 @@ footer {
   margin-top: 200px;
   margin-left: 20px;
   margin-bottom: 20px;
-  color: $grayLight;
+  color: $gray;
   small {
     float: left;
   }
   a {
     text-decoration: none;
-    color: $gray;
+    color: $grayDarker;
       &:hover {
-      color: $grayDarker;
+      color: $gray;
     }
   }
 }

@@ -27,14 +27,11 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    if @question_set = QuestionSet.find(session[:question_set_id])
-      @question = @question_set.questions.build(question_params)
-    else
-      @question = Question.new(question_params)
-    end
+    @question_set = QuestionSet.find(session[:question_set_id])
+    @question = @question_set.questions.build(question_params)
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
+        format.html { redirect_to @question_set, notice: 'Question was successfully created.' }
         format.json { render action: 'show', status: :created, location: @question }
       else
         format.html { render action: 'new' }
@@ -46,9 +43,10 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
+    @question_set = QuestionSet.find(session[:question_set_id])
     respond_to do |format|
       if @question.update(question_params)
-        format.html { redirect_to @question, notice: 'Question was successfully updated.' }
+        format.html { redirect_to @question_set, notice: 'Question was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -60,9 +58,10 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
+    @question_set = QuestionSet.find(session[:question_set_id])
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to questions_url }
+      format.html { redirect_to @question_set }
       format.json { head :no_content }
     end
   end
