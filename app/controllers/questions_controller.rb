@@ -17,11 +17,13 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
+    @question_set = QuestionSet.find(session[:question_set_id])
     @question = Question.new
   end
 
   # GET /questions/1/edit
   def edit
+    @question_set = QuestionSet.find(session[:question_set_id])
   end
 
   # POST /questions

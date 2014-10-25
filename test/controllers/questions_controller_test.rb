@@ -3,6 +3,7 @@ require 'test_helper'
 class QuestionsControllerTest < ActionController::TestCase
   setup do
     @question = questions(:one)
+    session[:question_set_id] = question_sets(:one).id
   end
 
   test "should get index" do
@@ -44,6 +45,6 @@ class QuestionsControllerTest < ActionController::TestCase
       delete :destroy, id: @question
     end
 
-    assert_redirected_to questions_path
+    assert_redirected_to question_set_path
   end
 end

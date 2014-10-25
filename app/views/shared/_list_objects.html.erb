@@ -1,3 +1,4 @@
+<!-- Must pass :objects, :display_attr and :linkit (true/false) -->
 <ul>
   <% objects.each do |object| %>
     <li>
@@ -7,10 +8,11 @@
       <% else %>
         <%= object["#{display_attr}"] %>
       <% end %>
-
-      <%= render 'shared/edit_object', object: object %>
+    <span class="edit_delete_links">
+      <%= render 'shared/edit_object', object: object %> |
       <%= render 'shared/delete_object', object: object %>
-      
+    </span>
+
     </li>
   <% end %>
 </ul>

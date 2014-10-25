@@ -18,7 +18,7 @@ class QuestionSetsControllerTest < ActionController::TestCase
 
   test "should create question_set" do
     assert_difference('QuestionSet.count') do
-      post :create, question_set: { title: @question_set.title }
+      post :create, question_set: { title: 'New title' }
     end
 
     assert_redirected_to question_set_path(assigns(:question_set))
@@ -35,7 +35,7 @@ class QuestionSetsControllerTest < ActionController::TestCase
   end
 
   test "should update question_set" do
-    patch :update, id: @question_set, question_set: { title: @question_set.title }
+    patch :update, id: @question_set, question_set: { title: 'Newer title' }
     assert_redirected_to question_set_path(assigns(:question_set))
   end
 

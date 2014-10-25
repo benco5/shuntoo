@@ -11,9 +11,6 @@ $grayLighter: #eee;
 $white:       #fff;
 
 html {
-  height: 100%;
-  overflow-y: scroll;
-  background-color: #3399FF;
 }
 
 /* universal */
@@ -21,10 +18,29 @@ html {
 body {
   padding-top: 70px;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  height: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: #3399FF;
+  z-index: -1;
+}
+
+.static_pages {
+  background: url('lanterns.jpg') no-repeat center center;
+  background-size: cover;
 }
 
 textarea {
   resize: vertical;
+}
+
+.alert {
+  width: 20%;
+  padding: 1em;
+  margin-bottom: 2em;
+  font: bold medium sans-serif;
+  color: #006600!important;
+  background-color: #FF7B7B;
 }
 
 .container {
@@ -40,14 +56,38 @@ textarea {
   align: center;
   border-radius: 10px;
   background-color: $grayLight;
-  li {
-    background-color: $white;
-    border: 1px solid $gray;
+  #question_content {
     border-radius: 10px;
-    margin: 5px;
+    height: 100px;
+    width: 90%;
+  }
+
+  ul {
+    margin-bottom: 10px;
+    //border: 2px solid red;
+    align: center;
+    padding: 0;
+  }
+  li {
+    width: 90%;
+    background-color: $white;
+    //border: 2px dashed red;
+    border-radius: 10px;
+    margin: 10px auto 10px auto;
     padding: 5px;
     list-style: none;
+    .edit_delete_links {
+      float: right;
+      margin-right: 5px;
+    }
   }
+}
+
+form#add_a_question input[type=submit] {
+  font: bold medium sans-serif;
+  border-radius: 10px;
+  height: 20%;
+  width: 20%;
 }
 
 /* typography */

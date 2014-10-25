@@ -1,7 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  content: MyText
+  id: 1
+  content: Foo?
 
 two:
-  content: MyText
+  id: 2
+  content: Bar?
+
+three:
+  id: 3
+  content: Baz?
