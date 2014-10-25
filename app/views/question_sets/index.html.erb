@@ -4,5 +4,5 @@
    <%= render 'shared/list_objects', objects: @question_sets,
       display_attr: 'title', link_it: true %>
   <br>
-  <%= link_to 'New Project', new_question_set_path %>
+  <%= button_to 'Add Project', new_question_set_path, method: 'get', :class => 'flow_button'  %>
 </div>

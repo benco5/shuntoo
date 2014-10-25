@@ -12,10 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Save', :class => 'flow_button' %>
+    <%= f.submit 'Save & Add Question', :class => 'flow_button' %>
+
+
   </div>
 <% end %>

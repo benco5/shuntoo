@@ -56,6 +56,9 @@ textarea {
   align: center;
   border-radius: 10px;
   background-color: $grayLight;
+  a {
+    text-decoration: none;
+  }
   #question_content {
     border-radius: 10px;
     height: 100px;
@@ -83,7 +86,7 @@ textarea {
   }
 }
 
-form#add_a_question input[type=submit] {
+.flow_button {
   font: bold medium sans-serif;
   border-radius: 10px;
   height: 20%;

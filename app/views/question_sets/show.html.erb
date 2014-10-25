@@ -4,7 +4,6 @@
   <%= render 'shared/list_objects', objects: @question_set.questions,
     display_attr: 'content', link_it: false %>
 
-  <%= button_to 'Add a Question', new_question_path, method: 'get',
-    :form => { :id => 'add_a_question' } %>
+  <%= button_to 'Add Question', new_question_path, method: 'get', :class => 'flow_button' %>
 
 </div>

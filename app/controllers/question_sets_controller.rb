@@ -28,8 +28,13 @@ class QuestionSetsController < ApplicationController
     respond_to do |format|
       if @question_set.save
         session[:question_set_id] = @question_set.id
-        format.html { redirect_to @question_set, notice: 'Question set was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @question_set }
+        if params[:commit] == 'Save'
+          format.html { redirect_to @question_set, notice: 'Question set was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @question_set }
+        elsif params[:commit] == 'Save & Add Question'
+          format.html { redirect_to new_question_path, notice: 'Question set was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @question_set }
+        end
       else
         format.html { render action: 'new' }
         format.json { render json: @question_set.errors, status: :unprocessable_entity }
