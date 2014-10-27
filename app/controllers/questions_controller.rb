@@ -24,6 +24,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1/edit
   def edit
     @question_set = QuestionSet.find(session[:question_set_id])
+    session[:question_id] = @question.id
   end
 
   # POST /questions
@@ -33,8 +34,14 @@ class QuestionsController < ApplicationController
     @question = @question_set.questions.build(question_params)
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question_set, notice: 'Question was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @question }
+        session[:question_id] = @question.id
+        if params[:commit] == 'Save'
+          format.html { redirect_to @question_set, notice: 'Question was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @question }
+        elsif params[:commit] == 'Save & Add Choice'
+          format.html { redirect_to new_choice_path, notice: 'Question was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @question }
+        end
       else
         format.html { render action: 'new' }
         format.json { render json: @question.errors, status: :unprocessable_entity }
@@ -48,8 +55,14 @@ class QuestionsController < ApplicationController
     @question_set = QuestionSet.find(session[:question_set_id])
     respond_to do |format|
       if @question.update(question_params)
-        format.html { redirect_to @question_set, notice: 'Question was successfully updated.' }
-        format.json { head :no_content }
+        session[:question_id] = @question.id
+        if params[:commit] == 'Save'
+          format.html { redirect_to @question_set, notice: 'Question was successfully updated.' }
+          format.json { head :no_content }
+        elsif params[:commit] == 'Save & Add Choice'
+          format.html { redirect_to new_choice_path, notice: 'Question was successfully updated.' }
+          format.json { head :no_content }
+        end
       else
         format.html { render action: 'edit' }
         format.json { render json: @question.errors, status: :unprocessable_entity }

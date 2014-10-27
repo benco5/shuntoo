@@ -1,4 +1,6 @@
 Shuntoo::Application.routes.draw do
+  resources :choices
+
   resources :question_sets
   resources :questions
 

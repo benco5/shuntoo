@@ -1,0 +1,7 @@
+<h1><%= @question.question_set.title %></h1>
+
+<div class="center">
+<%= render 'form' %>
+
+<%= button_to 'Cancel', question_set_path(@question.question_set), method: 'get', :class => 'flow_button'  %>
+</div>

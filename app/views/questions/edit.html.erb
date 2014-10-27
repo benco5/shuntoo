@@ -1,6 +1,8 @@
 <h1>Editing question</h1>
 
-<%= render 'form' %>
+<div class="center">
+  <%= render 'form' %>
 
-<%= link_to 'Show', @question %> |
-<%= link_to 'Back', questions_path %>
+  <%= button_to 'Cancel', question_set_path(@question_set), method: 'get', :class => 'flow_button'  %>
+</div>
+

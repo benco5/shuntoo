@@ -10,6 +10,9 @@ class QuestionSetsController < ApplicationController
   # GET /question_sets/1
   # GET /question_sets/1.json
   def show
+    if @question_set.questions.any?
+      @questions = @question_set.questions
+    end
   end
 
   # GET /question_sets/new
