@@ -1,6 +1,9 @@
 class QuestionSet < ActiveRecord::Base
   has_many :questions, dependent: :destroy
   has_many :choices, through: :questions
+
+  accepts_nested_attributes_for :questions, :reject_if => lambda { |a| 
+   a[:content].blank? }, allow_destroy: true
   
   validates :title, presence: true, uniqueness: true
 end

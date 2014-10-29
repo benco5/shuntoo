@@ -12,12 +12,29 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  <div class="actions">
-    <%= f.submit 'Save', :class => 'flow_button' %>
-    <%= f.submit 'Save & Add Question', :class => 'flow_button' %>
 
+  <%= f.fields_for :questions do |builder| %>
+    <fieldset>
+      <%= builder.label :content, "Question" %>
+      <%= builder.check_box :_destroy %>
+      <%= builder.label :_destroy, "remove" %><br />
+      <%= builder.text_area :content, rows: 3 %><br />
+
+
+        <%= builder.fields_for :choices do |new_builder| %>
+          <%= new_builder.label :content, "Choice" %>
+          <%= new_builder.text_field :content %>
+          <%= new_builder.check_box :_destroy %>
+          <%= new_builder.label :_destroy, "remove" %>
+        <% end %>
+    </fieldset>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
 
   </div>
 <% end %>

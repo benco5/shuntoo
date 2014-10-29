@@ -7,25 +7,16 @@
         <span>
           <%= question.content %>
         </span>
-        <span class="edit_delete_links">
-          <%= render 'shared/edit_object', object: question %> |
-          <%= render 'shared/delete_object', object: question %>
-        </span>
         <ul>
           <% question.choices.each do |choice| %>
             <li>
               <%= choice.content %>
-              <span class="edit_delete_links">
-                <%= render 'shared/edit_object', object: choice %> |
-                <%= render 'shared/delete_object', object: choice %>
-              </span>
             </li>
           <% end %>
         </ul>
       </li>
     <% end %>
   </ul>
-
+  <%= button_to 'Edit', edit_question_set_path, method: 'get', :class => 'flow_button' %>
   <%= button_to 'Add Question', new_question_path, method: 'get', :class => 'flow_button' %>
-
 </div>
