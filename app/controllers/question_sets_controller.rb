@@ -18,6 +18,10 @@ class QuestionSetsController < ApplicationController
   # GET /question_sets/new
   def new
     @question_set = QuestionSet.new
+    3.times do
+      question = @question_set.questions.build
+      4.times { question.choices.build }
+    end
   end
 
   # GET /question_sets/1/edit
@@ -31,13 +35,8 @@ class QuestionSetsController < ApplicationController
     respond_to do |format|
       if @question_set.save
         session[:question_set_id] = @question_set.id
-        if params[:commit] == 'Save'
-          format.html { redirect_to @question_set, notice: 'Question set was successfully created.' }
-          format.json { render action: 'show', status: :created, location: @question_set }
-        elsif params[:commit] == 'Save & Add Question'
-          format.html { redirect_to new_question_path, notice: 'Question set was successfully created.' }
-          format.json { render action: 'show', status: :created, location: @question_set }
-        end
+        format.html { redirect_to @question_set, notice: 'Question set was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @question_set }
       else
         format.html { render action: 'new' }
         format.json { render json: @question_set.errors, status: :unprocessable_entity }

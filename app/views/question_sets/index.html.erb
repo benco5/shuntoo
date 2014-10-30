@@ -1,10 +1,9 @@
 <h1>Menu</h1>
 
 <div class="center">
-   <%= render 'shared/list_objects',
-    objects: @question_sets,
-    display_attr: 'title',
-    link_it: true  %>
+   <%= render 'shared/menu_button_list',
+    objects: @question_sets, display_attr: 'title' %>
   <br>
-  <%= button_to 'Add Project', new_question_set_path, method: 'get', :class => 'flow_button'  %>
+  <%= button_to 'Add Project', new_question_set_path,
+    method: 'get', :class => 'flow_button'  %>
 </div>

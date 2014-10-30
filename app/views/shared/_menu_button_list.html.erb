@@ -1,0 +1,10 @@
+<!-- Must pass :objects, :display_attr -->
+<ol class="menu_buttons">
+  <% objects.each do |object| %>
+    <%= link_to object do %>
+      <li>
+        <%= object["#{display_attr}"] %>
+      </li>
+    <% end %>
+  <% end %>
+</ol>

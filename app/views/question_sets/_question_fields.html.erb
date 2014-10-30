@@ -1,0 +1,13 @@
+<fieldset>
+  <legend>
+    <p><%= f.label :content, "Question" %></p>
+  </legend>
+  <p>
+    <%= f.text_area :content, rows: 3 %>
+    <%= f.fields_for :choices do |builder| %>
+        <%= render 'question_sets/answer_fields', f: builder %>
+    <% end %>
+    <%= f.check_box :_destroy %>
+    <%= f.label :_destroy, "Remove Question" %>
+  </p>
+</fieldset>

@@ -1,6 +1,7 @@
-<h1>Editing question_set</h1>
+<h1>Edit <%= @question_set.title %></h1>
 
-<%= render 'form' %>
-
-<%= button_to 'Back', question_set_path, method: 'get', :class => 'flow_button' %>
+<div class="center">
+  <%= render 'form' %>
+  <%= button_to 'Cancel', question_set_path, method: 'get', :class => 'flow_button' %>
+</div>
 

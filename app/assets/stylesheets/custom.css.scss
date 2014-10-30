@@ -5,13 +5,10 @@ $black:       #000;
 $grayDarker:  #222;
 $grayDark:    #333;
 $gray:        #555;
-$grayMediumLight: #eaeaea;
+//$grayMediumLight: #eaeaea;
 $grayLight:   #999;
 $grayLighter: #eee;
 $white:       #fff;
-
-html {
-}
 
 /* universal */
 
@@ -44,21 +41,32 @@ textarea {
 }
 
 .container {
-  height: 500px;
+  height: 100%;
   width: 100%;
 }
 
-.center {
-  width: 50%;
-  text-align: center;
-  padding: 10px;
+/* menu buttons */
+
+.menu_buttons {
+  ol {
+  width: 90%;
   margin: auto;
+  padding: 0;
   align: center;
-  border-radius: 10px;
-  background-color: $grayLight;
-  a {
-    text-decoration: none;
+  border: 2px solid blue;
   }
+  li {
+    background-color: $white;
+    color: $black;
+    border-radius: 10px;
+    margin-bottom: 1em;
+    padding: 1em 0 1em 0;
+    text-align: center;
+    font: 2em bold;
+  }
+}
+
+/* forms lists */
 
 form .field {
   margin-bottom: 5px;
@@ -72,32 +80,57 @@ form .field {
   }
 }
 
-.question {
+fieldset legend {
+  font-weight: bold;
+}
+
+.center {
+  width: 50%;
+  text-align: center;
+  padding: 5%;
+  margin: auto;
+  align: center;
+  border-radius: 10px;
+  background-color: $grayLight;
+  a {
+    text-decoration: none;
+  }
+  ol {
+    list-style: none;
+    padding: 0;
+  }
+}
+
+.question_box {
   text-align: left;
   span {
     width: 80%;
   }
-}
-
+  width: 90%;
+  background-color: $white;
+  border-radius: 10px;
+  margin: 10px auto 10px auto;
+  padding: 1em;
+  .edit_delete_links {
+    align: right;
+    margin-right: 5px;
+  }
   ul {
-    margin-bottom: 10px;
-    //border: 2px solid red;
     align: center;
-    padding: 0;
+    margin: auto;
+    list-style: none;
   }
   li {
-    width: 90%;
-    background-color: $white;
-    //border: 2px dashed red;
-    border-radius: 10px;
-    margin: 10px auto 10px auto;
-    padding: 5px;
     list-style: none;
-    .edit_delete_links {
-      align: right;
-      margin-right: 5px;
-    }
+    margin: auto;
+    padding: 0 0 1em 1em;
+    text-align: left;
+    font: 1.1em bold;
   }
+}
+
+.choice_box {
+  
 }
 
 .flow_button {
@@ -239,10 +272,10 @@ header {
 
 footer {
   bottom: 0;
-  position: absolute;
-  margin-top: 200px;
-  margin-left: 20px;
-  margin-bottom: 20px;
+  position: relative;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-bottom: 40px;
   color: $gray;
   small {
     float: left;
