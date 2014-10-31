@@ -66,6 +66,3 @@ class QuestionFormatsController < ApplicationController
       params.require(:question_format).permit(:id, :name)
     end
 end
-
-
-end
