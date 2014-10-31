@@ -1,5 +1,5 @@
 class QuestionSet < ActiveRecord::Base
-  has_many :questions, dependent: :destroy
+  has_many :questions, inverse_of: :question_set, dependent: :destroy
   has_many :choices, through: :questions
 
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| 

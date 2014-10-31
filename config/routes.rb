@@ -1,6 +1,6 @@
 Shuntoo::Application.routes.draw do
   resources :choices
-
+  resources :question_formats
   resources :question_sets
   resources :questions
 

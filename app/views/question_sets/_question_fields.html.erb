@@ -3,11 +3,15 @@
     <p><%= f.label :content, "Question" %></p>
   </legend>
   <p>
-    <%= f.text_area :content, rows: 3 %>
+    <%= f.text_area :content, size: '65%x5%' %>
     <%= f.fields_for :choices do |builder| %>
         <%= render 'question_sets/answer_fields', f: builder %>
     <% end %>
+      <%= f.label 'Question format:' %>
+      <%= f.select :question_format_id,
+        options_for_select(@question_formats.reverse.map{ |format| [format.name, format.id] }), 
+        prompt: 'Please select a format' %><br />
+  </p>
     <%= f.check_box :_destroy %>
     <%= f.label :_destroy, "Remove Question" %>
-  </p>
 </fieldset>
