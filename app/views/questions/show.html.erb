@@ -1,5 +1,45 @@
+<h1><%= @question_set.title %></h1>
+
 <div class="center">
-  <p>
-  <%= @question.content %>
-</p>
+  <ol>
+    <% @questions.each do |question| %>
+      <li class="question_box">
+        <h3>
+          <%= question.content %>
+        </h3>
+        <% if @question_format.name == "Multiple Answer" %>
+          <ol>
+            <% question.choices.each do |choice| %>
+              <li class="choice_box">
+                <%= check_box_tag(:pet_dog) %>
+                <%= label_tag(:pet_dog, choice.content) %>
+              </li>
+            <% end %>
+          </ol>
+        <% elsif @question_format.name == "Single Answer" %>
+          <ol>
+            <% question.choices.each do |choice| %>
+              <li class="choice_box">
+                <%= radio_button_tag(:age, "child") %>
+                <%= label_tag(choice, choice.content) %>
+              </li>
+            <% end %>
+          </ol>
+          <% end %>
+      </li>
+    <% end %>
+  </ol>
+  <%= button_to 'Edit', edit_question_set_path, method: 'get', :class => 'flow_button' %>
+  <%= button_to 'Add Question', new_question_path, method: 'get', :class => 'flow_button' %>
 </div>
+
+<!--   Examples for checkbox and radio button syntax --> 
+  <%#= check_box_tag(:pet_dog) %>
+  <%#= label_tag(:pet_dog, "I own a dog") %>
+  <%#= check_box_tag(:pet_cat) %>
+  <%#= label_tag(:pet_cat, "I own a cat") %>
+
+  <%#= radio_button_tag(:age, "child") %>
+  <%#= label_tag(:age_child, "I am younger than 21") %>
+  <%#= radio_button_tag(:age, "adult") %>
+  <%#= label_tag(:age_adult, "I'm over 21") %>

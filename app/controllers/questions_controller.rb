@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :set_question_formats, only: [:show, :new, :create, :edit, :update]
+  before_action :set_question_format, only: [:show, :new, :create, :edit, :update]
   # GET /questions
   def index
     @questions = Question.all
@@ -8,6 +9,8 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1
   def show
+    @question_set = QuestionSet.find(session[:question_set_id])
+    @questions = @question_set.questions
   end
 
   # GET /questions/new
