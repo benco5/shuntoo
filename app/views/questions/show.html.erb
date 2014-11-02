@@ -17,15 +17,35 @@
             <% end %>
           </ol>
         <% elsif @question_format.name == "Single Answer" %>
-          <ol>
-            <% question.choices.each do |choice| %>
-              <li class="choice_box">
-                <%= radio_button_tag(:age, "child") %>
-                <%= label_tag(choice, choice.content) %>
-              </li>
+
+        <% responses = [] %>
+        <% @choices.each do |choice| %>
+          <% responses << choice.responses.build %>
+          <% @responses = responses %>
+        <% end %>
+
+
+
+          <%= form_for(@responses, url: responses_path ) do |f| %>
+            <% responses.each do |response| %>
+                <ol>
+                <%#= f.fields_for(response) do |c| %>
+                  <li class="choice_box">
+                    <%= f.hidden_field(:choice_id, value: response.choice.id) %>
+                    <%= f.radio_button(:pip, 1) %>
+                    <%= f.label(response.choice.content) %>
+                  </li>
+                </ol>
+              <%# end %>
             <% end %>
-          </ol>
+              <div class="actions">
+                <%= f.submit "Submit", :class => 'flow_button' %>
+              </div>
           <% end %>
+
+
+
+        <% end %>
       </li>
     <% end %>
   </ol>

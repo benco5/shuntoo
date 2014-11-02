@@ -74,6 +74,6 @@ class ChoicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def choice_params
-      params.require(:choice).permit(:id, :content)
+      params.require(:choice).permit(:id, :content, responses_attributes: [:id, :pip, :_destroy])
     end
 end

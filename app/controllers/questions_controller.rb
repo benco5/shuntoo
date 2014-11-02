@@ -1,7 +1,13 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :set_question_formats, only: [:show, :new, :create, :edit, :update]
-  before_action :set_question_format, only: [:show, :new, :create, :edit, :update]
+  before_action :set_question_format, only: [:show, :new, :edit, :update]
+  
+  def create_response
+    @response = Response.create(question_params)
+  end
+
+
   # GET /questions
   def index
     @questions = Question.all
@@ -11,6 +17,7 @@ class QuestionsController < ApplicationController
   def show
     @question_set = QuestionSet.find(session[:question_set_id])
     @questions = @question_set.questions
+    @choices = @question.choices
   end
 
   # GET /questions/new
@@ -78,6 +85,7 @@ class QuestionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
       params.require(:question).permit(:id, :content,
-        :question_set_id, :question_format_id, choices_attributes: [:id, :content, :_destroy])
+        :question_set_id, :question_format_id, choices_attributes: [:id, :content, :_destroy,
+        responses_attributes: [:id, :pip, :_destroy]])
     end
 end
