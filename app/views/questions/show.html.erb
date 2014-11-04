@@ -7,16 +7,6 @@
         <h3>
           <%= question.content %>
         </h3>
-        <% if @question_format.name == "Multiple Answer" %>
-          <ol>
-            <% question.choices.each do |choice| %>
-              <li class="choice_box">
-                <%= check_box_tag(:pet_dog) %>
-                <%= label_tag(:pet_dog, choice.content) %>
-              </li>
-            <% end %>
-          </ol>
-        <% elsif @question_format.name == "Single Answer" %>
 
         <% responses = [] %>
         <% @choices.each do |choice| %>
@@ -24,26 +14,42 @@
           <% @responses = responses %>
         <% end %>
 
+        <% if @question_format.name == "Multiple Answer" %>
 
+          <%= form_for(@responses, url: responses_path ) do |f| %>
+              <ol>
+              <% @responses.each do |response| %>
+                <%= f.fields_for 'responses[]', response do |ff| %>
+                 <li class="choice_box">
+                  <%= ff.check_box(:pip) %>
+                  <%= ff.hidden_field(:choice_id, value: response.choice.id) %>
+                  <%= response.choice.content %>
+                </li>
+                <% end %>
+               <% end %>
+              </ol>
+            <div class="actions">
+              <%= f.submit "Submit", :class => 'flow_button' %>
+            </div>
+            <% end %>
+    
+
+        <% elsif @question_format.name == "Single Answer" %>
 
           <%= form_for(@responses, url: responses_path ) do |f| %>
             <% responses.each do |response| %>
-                <ol>
-                <%#= f.fields_for(response) do |c| %>
-                  <li class="choice_box">
-                    <%= f.hidden_field(:choice_id, value: response.choice.id) %>
-                    <%= f.radio_button(:pip, 1) %>
-                    <%= f.label(response.choice.content) %>
-                  </li>
-                </ol>
-              <%# end %>
+              <ol>
+                <li class="choice_box">
+                  <%= f.hidden_field(:choice_id, value: response.choice.id) %>
+                  <%= f.radio_button(:pip, 1) %>
+                  <%= f.label(response.choice.content) %>
+                </li>
+              </ol>
             <% end %>
-              <div class="actions">
-                <%= f.submit "Submit", :class => 'flow_button' %>
-              </div>
+            <div class="actions">
+              <%= f.submit "Submit", :class => 'flow_button' %>
+            </div>
           <% end %>
-
-
 
         <% end %>
       </li>
@@ -52,14 +58,3 @@
   <%= button_to 'Edit', edit_question_set_path, method: 'get', :class => 'flow_button' %>
   <%= button_to 'Add Question', new_question_path, method: 'get', :class => 'flow_button' %>
 </div>
-
-<!--   Examples for checkbox and radio button syntax --> 
-  <%#= check_box_tag(:pet_dog) %>
-  <%#= label_tag(:pet_dog, "I own a dog") %>
-  <%#= check_box_tag(:pet_cat) %>
-  <%#= label_tag(:pet_cat, "I own a cat") %>
-
-  <%#= radio_button_tag(:age, "child") %>
-  <%#= label_tag(:age_child, "I am younger than 21") %>
-  <%#= radio_button_tag(:age, "adult") %>
-  <%#= label_tag(:age_adult, "I'm over 21") %>

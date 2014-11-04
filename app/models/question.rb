@@ -7,8 +7,7 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :choices,
     :reject_if => lambda { |a| a[:content].blank? }, allow_destroy: true
 
-  accepts_nested_attributes_for :responses,
-    :reject_if => lambda { |a| a[:content].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :responses
 
   validates :content, :question_set, :question_format_id, presence: true  
 end
