@@ -6,4 +6,8 @@ class QuestionSet < ActiveRecord::Base
    a[:content].blank? }, allow_destroy: true
   
   validates :title, presence: true, uniqueness: true
+
+  def first_question
+    questions.first
+  end
 end

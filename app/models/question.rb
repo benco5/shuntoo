@@ -10,4 +10,6 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :responses
 
   validates :content, :question_set, :question_format_id, presence: true  
+
+  self.per_page = 1
 end

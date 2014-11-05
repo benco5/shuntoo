@@ -1,20 +1,21 @@
-<h1><%= @question_set.title %></h1>
-
-<div class="center">
+<h1><%= @question_set.title %></h1>     <!-- Sets question set for current @question, -->           
+                                        <!-- which, relative to pagination, is first  -->
+<div class="center">                    <!-- question of question set series.         -->
+    <%= will_paginate @questions %>
   <ol>
     <% @questions.each do |question| %>
-      <li class="question_box">
+      <li class="question_box"> 
         <h3>
           <%= question.content %>
         </h3>
 
-        <% responses = [] %>
-        <% @choices.each do |choice| %>
-          <% responses << choice.responses.build %>
+        <% responses = [] %>                                <!-- Sets up empty array for responses -->
+        <% question.choices.each do |choice| %>             <!-- Iterates through question's choices -->
+          <% responses << choice.responses.build %>         <!-- Builds responses and puts them in array -->
           <% @responses = responses %>
         <% end %>
 
-        <% if @question_format.name == "Multiple Answer" %>
+        <% if question.question_format.name == "Multiple Answer" %>
 
           <%= form_for(@responses, url: responses_path ) do |f| %>
               <ol>
@@ -34,7 +35,7 @@
             <% end %>
     
 
-        <% elsif @question_format.name == "Single Answer" %>
+        <% elsif question.question_format.name == "Single Answer" %>
 
           <%= form_for(@responses, url: responses_path ) do |f| %>
             <% responses.each do |response| %>
@@ -55,6 +56,6 @@
       </li>
     <% end %>
   </ol>
-  <%= button_to 'Edit', edit_question_set_path, method: 'get', :class => 'flow_button' %>
-  <%= button_to 'Add Question', new_question_path, method: 'get', :class => 'flow_button' %>
+    <%= will_paginate @questions%>
 </div>
+

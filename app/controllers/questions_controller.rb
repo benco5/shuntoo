@@ -7,7 +7,6 @@ class QuestionsController < ApplicationController
     @response = Response.create(question_params)
   end
 
-
   # GET /questions
   def index
     @questions = Question.all
@@ -15,8 +14,9 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1
   def show
-    @question_set = QuestionSet.find(session[:question_set_id])
-    @questions = @question_set.questions
+    # @question_set = QuestionSet.find(session[:question_set_id])
+    @question_set = @question.question_set
+    @questions = @question_set.questions.paginate(:page => params[:page])
     @choices = @question.choices
   end
 

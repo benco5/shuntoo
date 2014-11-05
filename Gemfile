@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'rails-html-sanitizer'
+gem 'will_paginate', '~> 3.0.7'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
