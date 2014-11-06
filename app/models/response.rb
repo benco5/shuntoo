@@ -4,5 +4,5 @@ class Response < ActiveRecord::Base
 
   accepts_nested_attributes_for :choice
 
-  validates :pip, presence: true
+  validates :pip, :choice_id, presence: true
 end

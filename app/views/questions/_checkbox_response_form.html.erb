@@ -1,0 +1,16 @@
+<%= form_for(responses, url: responses_path ) do |f| %>
+  <ol>
+    <% responses.each do |response| %>
+      <%= f.fields_for 'responses[]', response do |ff| %>
+         <li class="choice_box">
+            <%= ff.check_box(:pip) %>
+            <%= ff.hidden_field(:choice_id, value: response.choice.id) %>
+            <%= response.choice.content %>
+        </li>
+      <% end %>
+    <% end %>
+  </ol>
+  <div class="actions">
+    <%= f.submit "Submit", :class => 'flow_button' %>
+  </div>
+<% end %>
