@@ -1,9 +1,20 @@
-<h1>Question Pool</h1>
-
-<div class="center">
-   <%= render 'shared/menu_button_list',
-    objects: @questions, display_attr: 'content' %>
-  <br>
-  <%= button_to 'Add Project', new_question_set_path,
-    method: 'get', :class => 'flow_button'  %>
+<h1><%= @question_set.title %></h1>                                   
+<div class="center">              
+    <%= will_paginate @questions %>
+  <ol>
+    <% @questions.each do |question| %>
+      <li class="question_box"> 
+        <h3><%= question.content %></h3>
+        <% @responses = build_responses_array_for(question) %>
+        <%= content_tag :div, "", id: "responses_chart",
+          data: { responses: response_chart_data_for(question) } %>
+        <% if question.question_format.name == "Multiple Answer" %>
+          <%= render 'shared/checkbox_response_form', responses: @responses %>
+        <% elsif question.question_format.name == "Single Answer" %>
+          <%= render 'shared/radio_response_form', responses: @responses  %>
+        <% end %>
+      </li>
+    <% end %>
+  </ol>
+    <%= will_paginate @questions%>
 </div>

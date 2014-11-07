@@ -2,7 +2,13 @@ class ResponsesController < ApplicationController
   before_action :set_response, only: [:show, :edit, :update, :destroy]
   before_action :check_box_responses, only: :create
 
+  def index
+    @question_set = QuestionSet.find(session[:question_set_id])
+    @questions = @question_set.questions.paginate(:page => params[:page])
+  end
+
   def show
+
   end
 
   def new
@@ -64,6 +70,6 @@ class ResponsesController < ApplicationController
     end
 
     def response_params
-      params.require(:response).permit(:id, :choice_id, :pip)      
+      params.require(:response).permit(:choice_id, :pip)      
     end
 end

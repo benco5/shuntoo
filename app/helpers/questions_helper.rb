@@ -1,5 +1,6 @@
 module QuestionsHelper
 
+# Build responses for radio and checkbox form
   def build_responses_array_for(question)
     responses = []
     question.choices.each do |choice|
@@ -8,8 +9,8 @@ module QuestionsHelper
     responses
   end
 
-
-  def response_chart_data_for(question)
+# Prepare response data for js bar chart
+  def response_chart_data_for(question)  
     question.choices.map do |choice|
       {
         choice_content: choice.content,
@@ -17,4 +18,5 @@ module QuestionsHelper
       }
     end
   end
+
 end

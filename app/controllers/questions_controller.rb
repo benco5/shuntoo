@@ -1,23 +1,16 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-  before_action :set_question_formats, only: [:show, :new, :create, :edit, :update]
+  before_action :set_question_formats, only: [:index, :show, :new, :create, :edit, :update]
   before_action :set_question_format, only: [:show, :new, :edit, :update]
-  
-  def create_response
-    @response = Response.create(question_params)
-  end
 
   # GET /questions
   def index
-    @questions = Question.all
+    @question_set = QuestionSet.find(params[:question_set_id])
+    @questions = @question_set.questions.paginate(:page => params[:page])
   end
 
   # GET /questions/1
   def show
-    # @question_set = QuestionSet.find(session[:question_set_id])
-    @question_set = @question.question_set
-    @questions = @question_set.questions.paginate(:page => params[:page])
-    @choices = @question.choices
   end
 
   # GET /questions/new

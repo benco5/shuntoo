@@ -1,0 +1,14 @@
+<%= form_for(responses, url: responses_path ) do |f| %>
+  <ol>
+    <% responses.each do |response| %>
+      <li class="choice_box">
+        <%= f.radio_button(:choice_id, response.choice_id, checked: false) %>
+        <%= f.hidden_field(:pip, value: 1) %>
+        <%= response.choice.content %>
+      </li>
+    <% end %>
+  </ol>
+  <div class="actions">
+    <%= f.submit "Submit", :class => 'flow_button' %>
+  </div>
+<% end %>
