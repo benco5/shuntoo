@@ -1,22 +1,18 @@
 <h1>Menu</h1>
 
 <div class="center">
-  <ol class="menu_buttons">
-  <% @question_sets.each do |question_set| %>
-    <%= link_to questions_path(question_set_id: question_set.id), id: "launch_button" do %>
-      <li>
-        <%= "Launch!" %>
-      </li>
-    <% end %>
-    <%= link_to question_set do %>
-      <li>
-        <%= question_set['title'] %>
-      </li>
-    <% end %>
-
-  <% end %>
-</ol>
-  <br>
   <%= button_to 'Add Project', new_question_set_path,
     method: 'get', :class => 'flow_button'  %>
+  <ol class="menu_buttons">
+    <% @question_sets.each do |question_set| %>
+      <%= link_to questions_path(question_set_id: question_set.id), id: "launch_button" do %>
+        <li><%= "Launch!" %></li>
+      <% end %>
+      <%= link_to question_set do %>
+        <li>
+          <%= question_set['title'] %>
+        </li>
+      <% end %>
+    <% end %>
+  </ol>
 </div>
