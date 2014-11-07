@@ -1,4 +1,6 @@
 Shuntoo::Application.routes.draw do
+  get 'users/new'
+  get 'signup' => 'users#new'
   resources :responses
   resources :choices
   resources :question_formats
@@ -9,6 +11,7 @@ Shuntoo::Application.routes.draw do
   match '/about', to: 'static_pages#about', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/menu', to: 'question_sets#index', via: 'get'
+
 
   
   # The priority is based upon order of creation: first created -> highest priority.
