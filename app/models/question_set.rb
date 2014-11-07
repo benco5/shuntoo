@@ -10,4 +10,8 @@ class QuestionSet < ActiveRecord::Base
   def first_question
     questions.first
   end
+
+  # def to_param  # overridden
+  #   title
+  # end
 end

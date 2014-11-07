@@ -1,10 +1,4 @@
 Shuntoo::Application.routes.draw do
-  # get 'responses/show'
-  # get 'responses/new'
-  # get 'responses/create'
-  # get 'responses/edit'
-  # get 'responses/update'
-  # get 'responses/destroy'
   resources :responses
   resources :choices
   resources :question_formats

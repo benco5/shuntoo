@@ -3,16 +3,17 @@
 <div class="center">
   <ol class="menu_buttons">
   <% @question_sets.each do |question_set| %>
+    <%= link_to questions_path(question_set_id: question_set.id), id: "launch_button" do %>
+      <li>
+        <%= "Launch!" %>
+      </li>
+    <% end %>
     <%= link_to question_set do %>
       <li>
         <%= question_set['title'] %>
       </li>
     <% end %>
-    <%= link_to questions_path(question_set_id: question_set.id) do %>
-      <li>
-        <%= "Launch!" %>
-      </li>
-    <% end %>
+
   <% end %>
 </ol>
   <br>
