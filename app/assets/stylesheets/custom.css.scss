@@ -1,5 +1,12 @@
 
- /* variabls */
+/* mixins, variables, etc. */
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
 
 $black:       #000;
 $grayDarker:  #222;
@@ -63,6 +70,7 @@ textarea {
 
   }
   a li {
+    border: 1px solid $grayDark;
     background-color: $white;
     color: $black;
     border-radius: 10px;
@@ -99,7 +107,8 @@ fieldset legend {
   margin: auto;
   align: center;
   border-radius: 10px;
-  background-color: $grayLight;
+  background-color: $white;
+  border: 1px solid $grayDark;
   a {
     text-decoration: none;
   }
@@ -142,6 +151,37 @@ fieldset legend {
   border-radius: 10px;
   height: 20%;
   width: 30%;
+}
+
+/* forms */
+
+.signup_form {
+  input, textarea, select, .uneditable-input {
+    border: 1px solid $grayDark;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 15px;
+    display: block;
+    border-radius: 10px;
+    text-align: center;
+    //@include box_sizing;
+  }
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  h2 {
+    color: $gray;
+  }
+  color: red;
+  ul {
+    padding: 0;
+    color: red;
+    margin: 0 0 30px 0;
+  }
 }
 
 /* typography */

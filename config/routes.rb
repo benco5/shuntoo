@@ -1,6 +1,7 @@
 Shuntoo::Application.routes.draw do
   get 'users/new'
   get 'signup' => 'users#new'
+  resources :users
   resources :responses
   resources :choices
   resources :question_formats
