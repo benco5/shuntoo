@@ -7,8 +7,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)    # Not the final implementation!
     respond_to do |format|
       if @user.save
+        flash[:success] = "Welcome aboard!"
         session[:user_id] = @user.id
-        format.html { redirect_to question_sets_path, notice: 'Signup completed.' }
+        format.html { redirect_to question_sets_path }
       else
         format.html { render action: 'new' }
       end

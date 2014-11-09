@@ -39,11 +39,12 @@ textarea {
 }
 
 .alert {
+  text-align: center;
   width: 20%;
   padding: 1em;
   margin-bottom: 2em;
   font: bold medium sans-serif;
-  color: #006600!important;
+  color: $grayDark;
   background-color: #FF7B7B;
 }
 
@@ -61,13 +62,11 @@ textarea {
   padding: 0;
   align: center;
   }
-
   a#launch_button li {
     background-color: red;
     color: $white;
     width: 20%;
     float: right;
-
   }
   a li {
     border: 1px solid $grayDark;
@@ -215,9 +214,9 @@ p {
 /* welcome unit */
 
 #welcome_unit {
-  height: 50%;
-  width: 30%;
-  margin: 75px 100px auto auto;
+  height: 400px;
+  width: 400px;
+  margin: 5% 5% auto auto;
   align: center;
   position: relative;
   border-radius: 28px;
@@ -228,11 +227,9 @@ p {
 #welcome_content {
   text-align: center;
   align: center;
-  height: 100%;
   z-index: 1;
   color: $white;
   font-weight: bold;
-  padding: 1em;
   h1 {
     font-size: 4.5em;
     margin-bottom: 0px;
