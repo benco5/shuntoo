@@ -6,7 +6,6 @@ module ApplicationHelper
 
     # Get the current year from the system
     current_year = Time.new.year
-
     # When the current year is more recent than the start year, return a string 
     # of a range (e.g., 2010 - 2012). Alternatively, as long as the start year 
     # is reasonable, return it as a string. Otherwise, return the current year 

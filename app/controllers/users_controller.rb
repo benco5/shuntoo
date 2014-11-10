@@ -7,8 +7,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)    # Not the final implementation!
     respond_to do |format|
       if @user.save
+        log_in @user
         flash[:success] = "Welcome aboard!"
-        session[:user_id] = @user.id
         format.html { redirect_to question_sets_path }
       else
         format.html { render action: 'new' }
@@ -16,10 +16,9 @@ class UsersController < ApplicationController
     end
   end
 
-
   private
 
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
 end

@@ -1,4 +1,3 @@
-
 /* mixins, variables, etc. */
 
 @mixin box_sizing {
@@ -32,6 +31,26 @@ body {
 .static_pages {
   background: url('lanterns.jpg') no-repeat center center;
   background-size: cover;
+  h1 {
+    color: $white;
+  }
+  .center {
+    background-color: #FF3300;
+    border: 2px solid $white;
+    color: $white;
+    padding: 1em;
+    line-height: 0em;
+    p {
+      margin: 0.25em;
+      text-align: justify;
+      text-justify: inter-word;
+      text-indent: 2em;
+    }
+    .signature {
+      text-align: right;
+      margin-right: 3em;
+    }
+  }
 }
 
 textarea {
@@ -44,7 +63,7 @@ textarea {
   padding: 1em;
   margin-bottom: 2em;
   font: bold medium sans-serif;
-  color: $grayDark;
+  color: red;
   background-color: #FF7B7B;
 }
 
@@ -78,7 +97,7 @@ textarea {
     text-align: center;
     font: 2em bold;
     width: 75%;
-  }
+  } 
 }
 
 /* forms lists */
@@ -167,6 +186,19 @@ fieldset legend {
   }
 }
 
+.login_form {
+  input, textarea, select, .uneditable-input {
+    border: 1px solid $grayDark;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 15px;
+    display: block;
+    border-radius: 10px;
+    text-align: center;
+    //@include box_sizing;
+  }
+}
+
 input {
   height: auto !important;
 }
@@ -221,7 +253,7 @@ p {
   position: relative;
   border-radius: 28px;
   background-color: #FF3300;
-  border: .25em solid $white;
+  border: 2px solid $white;
 }
 
 #welcome_content {
@@ -235,29 +267,41 @@ p {
     margin-bottom: 0px;
   }
   h2 {
-    font-size: 2em;
-    margin-bottom: 5px;
+    font-size: 1.8em;
+    margin: 0em 1em .5em 1em;
+    font-style: italic;
   }
   ul {
+    align: center;
     letter-spacing: 1px;
-    padding: 10px;
+    padding-top: 1em;
+    width: 70%;
+    margin-top: 0em;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 1px solid $white;
+    border-bottom: 1px solid $white;
   }
   li {
-    list-style: none;
-    font: bold 1.4em sans-serif;
+    font: bold 1.2em sans-serif;
     padding-bottom: 0.5em;
+    margin-left: 18%;
+    text-align: justify;
+    text-transform: uppercase;
+  }
+  a {
+    text-decoration: none;
   }
   a#signup_button div {
-    background-color: white;
-    border: .1em solid $grayLighter;
+    background-color: $grayLighter;
+    border: 2px solid $grayLight;
     border-radius: 10px;
     color: $grayDark;
-    width: 50%;
-    height: 25%;
+    width: 40%;
     text-aling: center;
     font: bold 1.4em sans-serif;
     margin: auto;
-    padding: 1em;
+    padding: .75em;
   }
 }
 
@@ -274,8 +318,8 @@ header {
 
 #header_color_block {
   background-color: $black;
-  filter:alpha(opacity=60); /* IE */
-  -moz-opacity:0.6; /* Mozilla */
+  filter:alpha(opacity=40); /* IE */
+  -moz-opacity:0.4; /* Mozilla */
   opacity: 0.4; /* CSS3 */
   position: absolute;
   top: 0; left: 0;
@@ -290,7 +334,7 @@ header {
     text-decoration: none;
     color: $grayLighter;
       &:hover {
-      color: $grayLight;
+      color: $white;
     }
   }
   ul {
@@ -299,9 +343,15 @@ header {
     float: right;
     list-style: none;
     li {
-    text-transform: uppercase;
-    float: left;
-    margin-left: 40px;
+      text-transform: uppercase;
+      float: left;
+      margin-left: 40px;
+      }
+    .button {
+      color: $grayLighter;
+      &:hover {
+      color: $white;
+      }
     }
   }
 
@@ -319,9 +369,28 @@ header {
     text-decoration: none;
     color: $grayLighter;
       &:hover {
-      color: $grayLight;
+      color: $white;
     }
   }
+}
+
+.dropdown{
+  background: $grayLight;
+  padding: .5em;
+  width: 5em;
+  padding: 0;
+  color: $white;
+  display:none;
+  float: right;
+  clear: both;
+  margin-top: 1em;
+}
+.dropdown a{
+  display:block;
+  margin-bottom: .5em;
+  color: $white;
+  text-align: center;
+  padding: .25em;
 }
 
 /* footer */
