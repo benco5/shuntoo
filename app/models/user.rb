@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, nil)
   end
 
-  # Boolean comparison of raw token's digest to stored digest
+  # Boolean comparison of raw token (..converted to digest) to stored digest
   def authenticated?(remember_token)
     remember_digest.nil? ? false :
       BCrypt::Password.new(remember_digest).is_password?(remember_token)

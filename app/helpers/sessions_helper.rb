@@ -9,7 +9,7 @@ module SessionsHelper
   def remember(user)
     user.remember                                             # Assigns new token to user and stores digest
     cookies.permanent.signed[:user_id] = user.id              # Sets encrypted user id to cookie
-    cookies.permanent[:remember_token] = user.remember_token  # Sets encrypted user token to cookie
+    cookies.permanent[:remember_token] = user.remember_token  # Sets raw user token to cookie
   end
 
   # Assigns current user from session if not cookies
@@ -40,6 +40,7 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  # Updates/sets user digest to nil in the db and clears ID and token cookies
   def forget(user)
     user.forget
     cookies.delete(:user_id)
