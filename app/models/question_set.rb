@@ -1,4 +1,5 @@
 class QuestionSet < ActiveRecord::Base
+  belongs_to :user
   has_many :questions, inverse_of: :question_set, dependent: :destroy
   has_many :choices, through: :questions
 

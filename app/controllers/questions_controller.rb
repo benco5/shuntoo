@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions
   def index
-    @question_set = QuestionSet.find(params[:question_set_id])
+    @question_set = current_user.question_sets.find_by(id: params[:question_set_id])
     @questions = @question_set.questions.paginate(:page => params[:page])
   end
 

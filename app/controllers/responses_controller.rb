@@ -8,7 +8,8 @@ class ResponsesController < ApplicationController
   end
 
   def show
-
+    @question_set = QuestionSet.find(session[:question_set_id])
+    @questions = @question_set.questions.paginate(:page => params[:page])
   end
 
   def new

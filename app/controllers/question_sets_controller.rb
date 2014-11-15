@@ -3,7 +3,7 @@ class QuestionSetsController < ApplicationController
   before_action :set_question_formats, only: [:show, :new, :create, :edit, :update]
   # GET /question_sets
   def index
-    @question_sets = QuestionSet.all
+    @question_sets = current_user.question_sets
   end
 
   # GET /question_sets/1
@@ -28,7 +28,8 @@ class QuestionSetsController < ApplicationController
 
   # POST /question_sets
   def create
-    @question_set = QuestionSet.new(question_set_params)
+    # @question_set = QuestionSet.new(question_set_params)
+    @question_set = current_user.question_sets.build(question_set_params)
     respond_to do |format|
       if @question_set.save
         session[:question_set_id] = @question_set.id

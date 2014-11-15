@@ -3,21 +3,21 @@ Shuntoo::Application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
-  get 'users/new'
   get 'signup' => 'users#new'
   resources :users
   resources :responses
   resources :choices
   resources :question_formats
-  resources :question_sets
-  resources :questions
+  resources :question_sets do
+    resources :questions
+  end
 
   root  'static_pages#home'
   match '/about', to: 'static_pages#about', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/menu', to: 'question_sets#index', via: 'get'
 
-
+# get '/zombies/:name', to: 'zombies#index', :as => 'graveyard'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

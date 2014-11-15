@@ -1,16 +1,6 @@
 class ChoicesController < ApplicationController
-  before_action :set_choice, only: [:show, :edit, :update, :destroy]
+  before_action :set_choice, only: [:update, :destroy]
 
-  # GET /choices
-  # GET /choices.json
-  def index
-    @choices = Choice.all
-  end
-
-  # GET /choices/1
-  # GET /choices/1.json
-  def show
-  end
 
   # GET /choices/new
   def new
@@ -32,10 +22,8 @@ class ChoicesController < ApplicationController
     respond_to do |format|
       if @choice.save
         format.html { redirect_to @question.question_set, notice: 'Choice was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @choice }
       else
         format.html { render action: 'new' }
-        format.json { render json: @choice.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,10 +35,8 @@ class ChoicesController < ApplicationController
     respond_to do |format|
       if @choice.update(choice_params)
         format.html { redirect_to @choice, notice: 'Choice was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @choice.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,7 +48,6 @@ class ChoicesController < ApplicationController
     @choice.destroy
     respond_to do |format|
       format.html { redirect_to @question.question_set }
-      format.json { head :no_content }
     end
   end
 

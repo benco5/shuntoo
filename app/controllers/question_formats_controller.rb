@@ -1,22 +1,6 @@
 class QuestionFormatsController < ApplicationController
   before_action :set_question_format, only: [:show, :edit, :update, :destroy]
 
-  # GET /question_formats
-  def index
-    @question_formats = QuestionSet.all
-  end
-
-  # GET /question_formats/1
-  def show
-    if @question_format.questions.any?
-      @questions = @question_format.questions
-    end
-  end
-
-  # GET /question_formats/new
-  def new
-    @question_format = QuestionSet.new
-  end
 
   # GET /question_formats/1/edit
   def edit

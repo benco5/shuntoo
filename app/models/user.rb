@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   # Provides accessors for handling as 'user.remember_token'
   attr_accessor :remember_token
+  has_many :question_sets
   before_save { email.downcase! }
   validates :name, length: { maximum: 50 }, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i

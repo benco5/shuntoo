@@ -10,3 +10,9 @@
 //         }, 1000);
 // });
 
+
+// $(document).ready(function() {
+//     $('#response_button').click(function() {
+//         location.reload("#responses_chart");
+//     });
+// });     
