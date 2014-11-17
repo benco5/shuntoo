@@ -28,12 +28,15 @@ class QuestionSetsController < ApplicationController
 
   # POST /question_sets
   def create
-    # @question_set = QuestionSet.new(question_set_params)
     @question_set = current_user.question_sets.build(question_set_params)
     respond_to do |format|
       if @question_set.save
+        @question_set.remember
         session[:question_set_id] = @question_set.id
-        format.html { redirect_to @question_set, notice: 'Question set was successfully created.' }
+        format.html { redirect_to @question_set,
+                      notice: "Success!
+                      Please record your response-password:
+                      #{@question_set.response_token}" }
       else
         format.html { render action: 'new' }
       end

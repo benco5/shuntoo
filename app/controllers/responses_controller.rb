@@ -1,10 +1,12 @@
 class ResponsesController < ApplicationController
   before_action :set_response, only: [:show, :edit, :update, :destroy]
   before_action :check_box_responses, only: :create
+  before_action :question_set_id_nil?, only: :index
 
   def index
     @question_set = QuestionSet.find(session[:question_set_id])
     @questions = @question_set.questions.paginate(:page => params[:page])
+    session[:question_set_id] = nil
   end
 
   def show
@@ -37,6 +39,12 @@ class ResponsesController < ApplicationController
   end
 
   private
+
+    def question_set_id_nil?
+      unless session[:question_set_id]
+        redirect_to root_url
+      end
+    end
 
     def respond_to_create                                     # Standard issue respond_to, but
      respond_to do |format|                                   # must be executed after (potentially)

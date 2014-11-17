@@ -1,0 +1,18 @@
+<% provide(:title, "Respond Here") %>
+<h1>Respond</h1>
+
+<div class="center">
+  <div class="login_form">
+
+    <%= form_for(:respondent) do |f| %>
+
+      <%= f.label :poll_title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.submit "Take Poll!", class: 'flow_button' %>
+    <% end %>
+  </div>
+</div>

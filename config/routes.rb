@@ -1,4 +1,5 @@
 Shuntoo::Application.routes.draw do
+
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
@@ -16,6 +17,8 @@ Shuntoo::Application.routes.draw do
   match '/about', to: 'static_pages#about', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/menu', to: 'question_sets#index', via: 'get'
+  match '/respond_here', to: 'respondents#new', via: 'get'
+  match '/respond_here', to: 'respondents#create', via: 'post'
 
 # get '/zombies/:name', to: 'zombies#index', :as => 'graveyard'
   
