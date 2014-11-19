@@ -1,8 +1,14 @@
 require 'test_helper'
 
 class ResponsesControllerTest < ActionController::TestCase
-  test "should get show" do
-    get :show
+
+  setup do
+    @myresponse = responses(:one)
+    session[:question_set_id] = question_sets(:one).id
+  end
+
+  test "should get index" do
+    get :index
     assert_response :success
   end
 
@@ -11,24 +17,18 @@ class ResponsesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get create" do
-    get :create
-    assert_response :success
+  test "should create response" do
+    assert_difference('Response.count') do
+      @request.env['HTTP_REFERER'] = responses_url
+      post :create, response: { pip: @myresponse.pip,
+                        choice_id: @myresponse.choice_id }
+    end
+    assert_redirected_to responses_url
   end
 
-  test "should get edit" do
-    get :edit
-    assert_response :success
-  end
-
-  test "should get update" do
-    get :update
-    assert_response :success
-  end
-
-  test "should get destroy" do
-    get :destroy
-    assert_response :success
-  end
-
+  # test "should destroy response" do
+  #   assert_difference('Response.count', -1) do
+  #     delete :destroy, id: @myresponse.id
+  #   end
+  # end
 end

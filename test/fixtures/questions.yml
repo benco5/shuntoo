@@ -1,13 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  id: 1
   content: Foo?
+  question_set: one
+  question_format: one
 
 two:
-  id: 2
   content: Bar?
+  question_set: one
+  question_format: one
 
 three:
-  id: 3
   content: Baz?
+  question_set: two
+  question_format: one

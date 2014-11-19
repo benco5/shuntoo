@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   pip: 1
-  choice_id: 
+  choice_id: 1
 
 two:
-  pip: 1
-  choice_id: 
+  id: 2
+  pip: 0
+  choice_id: 1

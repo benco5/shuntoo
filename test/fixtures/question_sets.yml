@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 1
-  title: Lecture-1
+  title: Topic1
+  user: bob
 
 two:
-  id: 2
-  title: Lecture-2
+  title: Topic2
+  user: bob
 
 three:
-  id: 3
-  title: Lecture-3
+  title: Topic3
+  user: jim

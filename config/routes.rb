@@ -1,24 +1,20 @@
 Shuntoo::Application.routes.draw do
-
+  
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-
   get 'signup' => 'users#new'
   resources :users
-  resources :responses
-  resources :choices
-  resources :question_formats
   resources :question_sets do
     resources :questions
   end
-
+  resources :responses, only: [:index, :new, :create, :delete]
   root  'static_pages#home'
   match '/about', to: 'static_pages#about', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/menu', to: 'question_sets#index', via: 'get'
-  match '/respond_here', to: 'respondents#new', via: 'get'
-  match '/respond_here', to: 'respondents#create', via: 'post'
+  match '/respond', to: 'respondents#new', via: 'get'
+  match '/respond', to: 'respondents#create', via: 'post'
 
 # get '/zombies/:name', to: 'zombies#index', :as => 'graveyard'
   

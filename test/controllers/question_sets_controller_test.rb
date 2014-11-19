@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class QuestionSetsControllerTest < ActionController::TestCase
-  setup do
+
+  def setup
+    @current_user = users(:bob)
+    session[:user_id] = @current_user.id
     @question_set = question_sets(:one)
+    @question_sets = @current_user.question_sets
+    @question_format = question_formats(:one)
   end
 
   test "should get index" do

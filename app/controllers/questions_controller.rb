@@ -9,65 +9,65 @@ class QuestionsController < ApplicationController
     @questions = @question_set.questions.paginate(:page => params[:page])
   end
 
-  # GET /questions/1
-  def show
-  end
+  # # GET /questions/1
+  # def show
+  # end
 
-  # GET /questions/new
-  def new
-    @question_set = QuestionSet.find(session[:question_set_id])
-    @question = Question.new
-  end
+  # # GET /questions/new
+  # def new
+  #   @question_set = QuestionSet.find(session[:question_set_id])
+  #   @question = Question.new
+  # end
 
-  # GET /questions/1/edit
-  def edit
-    @question_set = QuestionSet.find(session[:question_set_id])
-    session[:question_id] = @question.id
-  end
+  # # GET /questions/1/edit
+  # def edit
+  #   @question_set = QuestionSet.find(session[:question_set_id])
+  #   session[:question_id] = @question.id
+  # end
 
-  # POST /questions
-  def create
-    @question_set = QuestionSet.find(session[:question_set_id])
-    @question = @question_set.questions.build(question_params)
-    respond_to do |format|
-      if @question.save
-        session[:question_id] = @question.id
-        if params[:commit] == 'Save'
-          format.html { redirect_to @question_set, notice: 'Question was successfully created.' }
-        elsif params[:commit] == 'Save & Add Choice'
-          format.html { redirect_to new_choice_path, notice: 'Question was successfully created.' }
-        end
-      else
-        format.html { render action: 'new' }
-      end
-    end
-  end
+  # # POST /questions
+  # def create
+  #   @question_set = QuestionSet.find(session[:question_set_id])
+  #   @question = @question_set.questions.build(question_params)
+  #   respond_to do |format|
+  #     if @question.save
+  #       session[:question_id] = @question.id
+  #       if params[:commit] == 'Save'
+  #         format.html { redirect_to @question_set, notice: 'Question was successfully created.' }
+  #       elsif params[:commit] == 'Save & Add Choice'
+  #         format.html { redirect_to new_choice_path, notice: 'Question was successfully created.' }
+  #       end
+  #     else
+  #       format.html { render action: 'new' }
+  #     end
+  #   end
+  # end
 
-  # PATCH/PUT /questions/1
-  def update
-    @question_set = QuestionSet.find(session[:question_set_id])
-    respond_to do |format|
-      if @question.update(question_params)
-        session[:question_id] = @question.id
-        if params[:commit] == 'Save'
-          format.html { redirect_to @question_set, notice: 'Question was successfully updated.' }
-        elsif params[:commit] == 'Save & Add Choice'
-          format.html { redirect_to new_choice_path, notice: 'Question was successfully updated.' }
-        end
-      else
-        format.html { render action: 'edit' }
-      end
-    end
-  end
+  # # PATCH/PUT /questions/1
+  # def update
+  #   @question_set = QuestionSet.find(session[:question_set_id])
+  #   respond_to do |format|
+  #     if @question.update(question_params)
+  #       session[:question_id] = @question.id
+  #       if params[:commit] == 'Save'
+  #         format.html { redirect_to @question_set, notice: 'Question was successfully updated.' }
+  #       elsif params[:commit] == 'Save & Add Choice'
+  #         format.html { redirect_to new_choice_path, notice: 'Question was successfully updated.' }
+  #       end
+  #     else
+  #       format.html { render action: 'edit' }
+  #     end
+  #   end
+  # end
 
-  # DELETE /questions/1
-  def destroy
-    @question_set = QuestionSet.find(session[:question_set_id])
-    @question.destroy
-    respond_to do |format|
-      format.html { redirect_to @question_set }
-    end
-  end
+  # # DELETE /questions/1
+  # def destroy
+  #   @question_set = QuestionSet.find(session[:question_set_id])
+  #   @question.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to @question_set }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

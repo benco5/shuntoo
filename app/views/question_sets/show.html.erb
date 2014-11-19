@@ -1,22 +1,24 @@
 <h1><%= @question_set.title %></h1>
 
 <div class="center">
-  <ol>
-    <% @questions.each do |question| %>
-      <li class="question_box">
-        <h3>
-          <%= question.content %>
-        </h3>
-        <ul>
-          <% question.choices.each do |choice| %>
-            <li class="choice_box">
-              <%= choice.content %>
-            </li>
-          <% end %>
-        </ul>
-          <%= question.question_format.name %>
-      </li>
-    <% end %>
-  </ol>
+  <% unless @questions.nil? %>
+    <ol>
+      <% @questions.each do |question| %>
+        <li class="question_box">
+          <h3>
+            <%= question.content %>
+          </h3>
+          <ul>
+            <% question.choices.each do |choice| %>
+              <li class="choice_box">
+                <%= choice.content %>
+              </li>
+            <% end %>
+          </ul>
+            <%= question.question_format.name %>
+        </li>
+      <% end %>
+    </ol>
+  <% end %>
   <%= button_to 'Edit', edit_question_set_path, method: 'get', :class => 'flow_button' %>
 </div>

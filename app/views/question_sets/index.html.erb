@@ -6,9 +6,6 @@
     method: 'get', :class => 'flow_button'  %>
   <ol class="menu_buttons">
     <% @question_sets.each do |question_set| %>
-<!--       <%#= link_to questions_path(question_set_id: question_set.id), id: "launch_button" do %>
-        <li><%#= "Launch!" %></li>
-      <%# end %> -->
       <%= link_to question_set_questions_path(question_set), id: "launch_button" do %>
         <li><%= "Launch!" %></li>
       <% end %>
