@@ -1,25 +1,37 @@
-<header>
-  <div id="header_color_block"></div>
-  <nav id="header_nav">
-    <%= link_to "Shuntoo", root_path, id: "logo" %>
-    <ul>
-      <% if signed_in? %>
-        <li><%= link_to "Home", menu_path %></li>
-      <% else %>
-        <li><%= link_to "Home",   root_path %></li>
-      <% end %>
-      <li><%= link_to "About",  about_path  %></li>
-      <li><%= link_to "Help",   help_path %></li>
-      <li><%= link_to "Contact",  "#"  %></li>
-      <% if signed_in? %>
-        <li class="button">Account</li>
-          <div class="dropdown">
-              <%= link_to "Settings", '#' %>
-              <%= link_to "Logout", logout_path, method: "delete" %>
-          </div>
-      <% else %>
-        <li><%= link_to "Login",  login_path %></li>
-      <% end %>
+
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><%= link_to "Shuntoo", root_path %></h1>
+      </li>
+      <li class="toggle-topbar menu-icon">
+        <% if signed_in? %>
+          <span><%= link_to "Home", menu_path %></span>
+        <% else %>
+          <span><%= link_to "Home", root_path %></span>
+        <% end %>
+      </li>
     </ul>
+
+    <section class="top-bar-section">
+      <ul class="right">
+        <% if signed_in? %>
+          <li><%= link_to "Home", menu_path %></li>
+        <% else %>
+          <li><%= link_to "Home",   root_path %></li>
+        <% end %>
+        <li><%= link_to "About",  about_path  %></li>
+        <li><%= link_to "Help",   help_path %></li>
+        <li><%= link_to "Contact",  "#"  %></li>
+        <% if signed_in? %>
+<!--           <li class="button">Account</li>
+            <div class="dropdown"> -->
+                <li><%= link_to "Settings", '#' %></li>
+                <li><%= link_to "Logout", logout_path, method: "delete" %></li>
+<!--             </div> -->
+        <% else %>
+          <li><%= link_to "Login",  login_path %></li>
+        <% end %>
+      </ul>
+    </section>
   </nav>
-</header>

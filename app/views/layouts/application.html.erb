@@ -10,14 +10,22 @@
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
   </head>
+
   <body class="<%= controller.controller_name %>">
+
     <%= render 'layouts/header' %>
-    <div class="container">
-      <%= render 'shared/flash_alert' %>
-    <%= yield %>
-    <%= debug(params) if Rails.env.development? %>
-    <%= render 'layouts/footer' %>
+
+    <div class="row">
+
+    <%= render 'shared/flash_alert' %>
+
+    <div class="large-12 columns"><%= yield %></div>
     </div>
+
+    <%= debug(params) if Rails.env.development? %>
+
+    <%= render 'layouts/footer' %>
+
     <%= javascript_include_tag "application", "data-turbolinks-track" => true  %>
   </body>
 </html>

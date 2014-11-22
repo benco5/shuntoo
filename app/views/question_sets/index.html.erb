@@ -1,9 +1,9 @@
 <% provide(:title, 'Menu') %>
 
 <h1>Menu</h1>
-<div class="center">
-  <%= button_to 'Add Project', new_question_set_path,
-    method: 'get', :class => 'flow_button'  %>
+
+  <%= link_to 'Add Project', new_question_set_path,
+    method: 'get' %>
   <ol class="menu_buttons">
     <% @question_sets.each do |question_set| %>
       <%= link_to question_set_questions_path(question_set), id: "launch_button" do %>
@@ -14,4 +14,4 @@
       <% end %>
     <% end %>
   </ol>
-</div>
+
