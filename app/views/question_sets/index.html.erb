@@ -1,15 +1,13 @@
 <% provide(:title, 'Polls Menu') %>
 
-<div class="row">
-  <div  class="large-10 small-centered columns">
-    <h2 id="page-title" class="subheader">Polls Menu</h2>
-  </div>
+<div id="top-row" class="row">
+  <h2 id="page-title" class="large-8 small-centered columns subheader">Polls Menu</h2>
+  <ul class="button-group round">
+    <li><%= link_to "Create Poll", new_question_set_path, class: "tiny button alert"%></li>
+  </ul>
 </div>
 
 <div class="row">
-  <%= link_to "Create Poll", new_question_set_path, class: "button"%>
-</div>
-
   <ol>
     <% @question_sets.each do |question_set| %>
       <div id="poll-panel" class="panel clearfix">
@@ -17,7 +15,7 @@
           <h3><%= question_set['title'] %></h3>
         </div>
         <div class="right">
-          <ul class="stack-for-small round secondary button-group">
+          <ul class="stack-for-small radius button-group">
             <li><%= link_to "Review", question_set, class: "button" %>
             </li>
             <li><%= link_to "Edit", edit_question_set_path(question_set), class: "button" %>
@@ -29,4 +27,4 @@
       </div>
     <% end %>
   </ol>
-
+</div>

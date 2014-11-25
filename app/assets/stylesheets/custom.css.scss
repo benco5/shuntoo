@@ -1,9 +1,5 @@
 @import "foundation_and_overrides";
 
-/* mixins, variables, etc. */
-
-
-
 $black:       #000;
 $grayDarker:  #222;
 $grayDark:    #333;
@@ -12,8 +8,6 @@ $grayMediumLight: #eaeaea;
 $grayLight:   #999;
 $grayLighter: #eee;
 $white:       #fff;
-
-
 
 .static_pages {
   background: url('lanterns.jpg') no-repeat center center;
@@ -27,6 +21,21 @@ $white:       #fff;
 #question-panel {
   padding-left: rem-calc(40);
   padding-right: rem-calc(40);
+}
+
+#top-row {
+  margin-top: rem-calc(10);
+  margin-bottom: rem-calc(-35);
+  padding: rem-calc(22);
+
+  .button-group {
+    margin-top: rem-calc(20);
+    margin-left: rem-calc(5);
+  }
+}
+
+#page-title {
+  text-align: center;
 }
 
 #question-text {
@@ -45,7 +54,8 @@ $white:       #fff;
 }
 
 #chart_box {
-  height: rem-calc(500);
+  margin-top: rem-calc(30);
+  height: rem-calc(600);
 }
 
 ul#choice-list li {
@@ -54,17 +64,11 @@ ul#choice-list li {
   padding-left: rem-calc(10);
 }
 
-#page-title {
-  text-align: center;
-}
-
 li {
   list-style: none;
 }
 
-
-
-.alert {
+.alert-notice {
   text-align: center;
   width: 20%;
   padding: 1em;
@@ -73,6 +77,9 @@ li {
   color: red;
   background-color: #FF7B7B;
 }
+
+
+
 
 
 
