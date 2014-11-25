@@ -1,7 +1,13 @@
-<h1>Edit <%= @question_set.title %></h1>
+<% provide(:title, 'Review') %>
+
+<div class="row">
+  <div class="large-10 small-centered columns">
+    <h2 id="page-title" class="subheader">
+      <%= @question_set.title %></h2>
+  </div>
+</div> 
 
 <div class="center">
   <%= render 'form' %>
-  <%= button_to 'Cancel', question_set_path, method: 'get', :class => 'flow_button' %>
 </div>
 

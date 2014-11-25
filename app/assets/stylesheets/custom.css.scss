@@ -13,13 +13,55 @@ $grayLight:   #999;
 $grayLighter: #eee;
 $white:       #fff;
 
-/* universal */
 
 
 .static_pages {
   background: url('lanterns.jpg') no-repeat center center;
   background-size: cover;
 }
+
+#poll-panel {
+  padding: rem-calc(20) rem-calc(40) rem-calc(5) rem-calc(20);
+}
+
+#question-panel {
+  padding-left: rem-calc(40);
+  padding-right: rem-calc(40);
+}
+
+#question-text {
+  padding: rem-calc(10);
+
+  h3 {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+  h5 {
+    text-indent: rem-calc(40);
+    padding: rem-calc(10);
+    font-weight: bold;
+  }
+}
+
+#chart_box {
+  height: rem-calc(500);
+}
+
+ul#choice-list li {
+  list-style: circle;
+  padding-bottom: rem-calc(15);
+  padding-left: rem-calc(10);
+}
+
+#page-title {
+  text-align: center;
+}
+
+li {
+  list-style: none;
+}
+
 
 
 .alert {

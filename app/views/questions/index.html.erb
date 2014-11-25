@@ -1,20 +1,21 @@
-<h1><%= @question_set.title %></h1>                                   
-<div class="center">              
-    <%= will_paginate @questions %>
+<% provide(:title, 'Presentation') %>
+
+<div class="row">
+  <div class="large-10 small-centered columns">
+    <h2 id="page-title" class="subheader">
+      <%= @question_set.title %></h2>
+  </div>
+</div> 
+       
   <ol>
     <% @questions.each do |question| %>
-      <li class="question_box"> 
+      <li id="chart_box"> 
         <h3><%= question.content %></h3>
-        <% @responses = build_responses_array_for(question) %>
-        <%= content_tag :div, "", id: "responses_chart",
-          data: { responses: response_chart_data_for(question) } %>
-        <% if question.question_format.name == "Multiple Answer" %>
-          <%= render 'shared/checkbox_response_form', responses: @responses %>
-        <% elsif question.question_format.name == "Single Answer" %>
-          <%= render 'shared/radio_response_form', responses: @responses  %>
-        <% end %>
+          <%= content_tag :div, "", id: "responses_chart",
+            data: { responses: response_chart_data_for(question) } %>
       </li>
     <% end %>
   </ol>
-    <%= will_paginate @questions%>
+<div class="pagination-centered">
+  <%= will_paginate %>
 </div>

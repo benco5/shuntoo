@@ -12,10 +12,9 @@
 //
 
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
-//= require foundation
 //= require turbolinks
+//= require foundation
 //= require raphael
 //= require morris.min
 //= require foundation
