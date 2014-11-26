@@ -16,5 +16,5 @@
     <% end %>
   </ol>
 <div class="pagination-centered">
-  <%= will_paginate %>
+  <%= will_paginate @questions, renderer: FoundationPagination::Rails %>
 </div>

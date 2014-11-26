@@ -1,8 +1,8 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
 
-<div class="center">
-  <div class="signup_form">
+<div id="top-row" class="row">
+  <h2 id="page-title" class="large-8 small-centered columns subheader">Signup</h2>
+</div>
     
   <%= form_for(@user) do |f| %>
 
@@ -20,7 +20,5 @@
     <%= f.label :password_confirmation, "Confirmation" %>
     <%= f.password_field :password_confirmation %>
 
-    <%= f.submit "Create my account", class: 'flow_button' %>
+    <%= f.submit "Create my account", class: 'button' %>
   <% end %>
-  </div>
-</div>

@@ -1,6 +1,11 @@
-<h1>Menu</h1>
+<% provide(:title, 'Create Poll') %>
 
-<div class="center">
+<div id="top-row" class="row">
+  <h2 id="page-title" class="large-10 small-centered columns subheader">
+    Create Poll
+  </h2>
+</div>
+
+<div class="row">
   <%= render 'form' %>
-  <%= button_to 'Cancel', menu_path, method: 'get', :class => 'flow_button'  %>
 </div>

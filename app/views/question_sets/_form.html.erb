@@ -2,24 +2,27 @@
 
   <%= render 'shared/form_errors', object: @question_set %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div><br />
+  <div class="row collapse">
+    <div>
+      <%= f.label :title, class: "inline-left" %>
+    </div>
+    <div>
+      <%= f.text_field :title %>
+    </div>
+  </div>
 
   <%= f.fields_for :questions do |builder| %>
-    <div class="question_box">
-      <%= render 'question_sets/question_fields', f: builder %>
-    </div>
-
+    <%= render 'question_sets/question_fields', f: builder %>
   <% end %>
 
-  <div class="actions">
-    <ul class="button-group round">
-      <li><%= f.submit "Update", class: "small button alert"%></li>
-      <li><%=  link_to "Cancel Changes", question_sets_path, class: "small button alert"%></li>
-    </ul>
+
+  <div class="button-group">
+    <%= f.submit "Update", class: "button" %>
+    <%= link_to "Cancel", question_sets_path, class: "button" %>
+  </div>
+
 <% end %>
+
 
 
 

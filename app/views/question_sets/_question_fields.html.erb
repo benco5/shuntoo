@@ -1,17 +1,32 @@
 <fieldset>
-  <legend>
-    <p><%= f.label :content, "Question" %></p>
-  </legend>
-  <p>
-    <%= f.text_area :content, size: '65%x5%' %>
-    <%= f.fields_for :choices do |builder| %>
-        <%= render 'question_sets/answer_fields', f: builder %>
-    <% end %>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.label :content, "Question" %>
+        <div>
+          <%= f.text_area :content, size: 'x5' %>
+        </div>
+    </div>
+  </div>
+
+
+  <%= f.fields_for :choices do |builder| %>
+    <%= render 'question_sets/answer_fields', f: builder %>
+  <% end %>
+
+  <div class="row">
+    <div class="large-4 columns">
       <%= f.label 'Question format:' %>
       <%= f.select :question_format_id,
         options_for_select(@question_formats.reverse.map{ |format| [format.name, format.id] }), 
-        prompt: 'Please select a format' %><br />
-  </p>
-    <%= f.check_box :_destroy %>
-    <%= f.label :_destroy, "Remove Question" %>
+        prompt: "Please select a format" %>
+    </div><br />
+
+
+    <div class="small-3 columns right">
+      <%= f.check_box :_destroy %>
+      <%= f.label :_destroy, "Remove Question", class: "inline-right" %>
+    </div>
+  </div>
+
 </fieldset>
