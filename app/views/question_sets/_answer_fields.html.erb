@@ -5,9 +5,11 @@
   <div class="large-9 columns">
     <%= f.text_field :content %>
   </div>
-  <div>
+
+  <%= hidden_tag_if(params[:action] == "new", :div) do %>
     <%= f.check_box :_destroy, class: "small-offset-1" %>
     <%= f.label :_destroy, "remove", class: "inline-right" %>
-  </div>
+  <% end %>
+
 </div>
 

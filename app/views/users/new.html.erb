@@ -4,21 +4,43 @@
   <h2 id="page-title" class="large-8 small-centered columns subheader">Signup</h2>
 </div>
     
-  <%= form_for(@user) do |f| %>
+<%= form_for(@user) do |f| %>
 
-    <%= render 'shared/form_errors', object: @user %>
+  <%= render 'shared/form_errors', object: @user %>
 
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="row">
+    <div class="large-8 small-centered columns">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+  </div>
 
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+  <div class="row">
+    <div class="large-8 small-centered columns">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+  </div>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+  <div class="row">
+    <div class="large-8 small-centered columns">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+  </div>
 
-    <%= f.label :password_confirmation, "Confirmation" %>
-    <%= f.password_field :password_confirmation %>
+  <div class="row">
+    <div class="large-8 small-centered columns">
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+  </div><br />
 
-    <%= f.submit "Create my account", class: 'button' %>
-  <% end %>
+  <div class="row">
+    <div class="large-3 small-centered column">
+      <%= f.submit "Sign me up!", class: "button radius" %>
+    </div>
+  </div>
+
+<% end %>
+

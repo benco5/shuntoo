@@ -1,5 +1,7 @@
 @import "foundation_and_overrides";
 
+$welcome-panel-color:#e42e09;
+
 $black:       #000;
 $grayDarker:  #222;
 $grayDark:    #333;
@@ -38,7 +40,6 @@ form {
   margin-top: rem-calc(55);
 }
 
-
 #page-title {
   text-align: center;
 }
@@ -73,98 +74,42 @@ li {
   list-style: none;
 }
 
-.alert-notice {
+
+
+/* welcome panel */
+
+#welcome-panel {
+  @include panel(
+    // Sets the panel background color. Default: $panel-pg
+    $bg: $welcome-panel-color,
+    // Sets the panel padding amount. Default: $panel-padding
+    $padding:20px,
+    // Sets the font color based on the darkness of the bg & resets header line-heights for panels. Default: $panel-header-adjust
+    $adjust:true
+  );
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  border-radius: 10px;
+  border: 2px solid $ghost;
   text-align: center;
-  width: 20%;
-  padding: 1em;
-  margin-bottom: 2em;
-  font: bold medium sans-serif;
-  color: red;
-  background-color: #FF7B7B;
-}
-
-
-
-
-
-
-
-#error_explanation {
-  h2 {
-    color: $gray;
-  }
-  color: red;
-  ul {
-    padding: 0;
-    color: red;
-    margin: 0 0 30px 0;
-  }
-}
-
-
-
-/* welcome unit */
-
-#welcome_unit {
-  height: 400px;
-  width: 400px;
-  margin: 5% 5% auto auto;
-  align: center;
-  position: relative;
-  border-radius: 28px;
-  background-color: #FF3300;
-  border: 2px solid $white;
-}
-
-#welcome_content {
-  text-align: center;
-  align: center;
-  z-index: 1;
-  color: $white;
-  font-weight: bold;
+  margin-top: rem-calc(75);
   h1 {
-    font-size: 4.5em;
-    margin-bottom: 0px;
+    font-size: rem-calc(60);
+    font-weight: bold;
   }
-  h2 {
-    font-size: 1.8em;
-    margin: 0em 1em .5em 1em;
-    font-style: italic;
+  h3 {
+    font-style: oblique;
   }
   ul {
-    align: center;
-    letter-spacing: 1px;
-    padding-top: 1em;
-    width: 70%;
-    margin-top: 0em;
-    margin-left: auto;
-    margin-right: auto;
-    border-top: 1px solid $white;
-    border-bottom: 1px solid $white;
-  }
-  li {
-    font: bold 1.2em sans-serif;
-    padding-bottom: 0.5em;
-    margin-left: 18%;
-    text-align: justify;
-    text-transform: uppercase;
-  }
-  a {
-    text-decoration: none;
-  }
-  a#signup_button div {
-    background-color: $grayLighter;
-    border: 2px solid $grayLight;
-    border-radius: 10px;
-    color: $grayDark;
-    width: 40%;
-    text-aling: center;
-    font: bold 1.4em sans-serif;
-    margin: auto;
-    padding: .75em;
+    border-top: 1px solid $ghost;
+    border-bottom: 1px solid $ghost;
+    padding: rem-calc(10);
+    li {
+      font-size: rem-calc(18);
+      text-transform: uppercase;
+      list-style: disc;
+    }
   }
 }
-
 
 
 /* footer */
@@ -185,5 +130,29 @@ footer {
       &:hover {
       color: $gray;
     }
+  }
+}
+
+/* errors and alerts */
+
+.alert-notice {
+  text-align: center;
+  width: 20%;
+  padding: 1em;
+  margin-bottom: 2em;
+  font: bold medium sans-serif;
+  color: red;
+  background-color: #FF7B7B;
+}
+
+#error_explanation {
+  h2 {
+    color: $gray;
+  }
+  color: red;
+  ul {
+    padding: 0;
+    color: red;
+    margin: 0 0 30px 0;
   }
 }

@@ -1,9 +1,15 @@
-<% provide(:title, 'Polls Menu') %>
+<% provide(:title, 'Polls') %>
 
 <div id="top-row" class="row">
-  <h2 id="page-title" class="large-8 small-centered columns subheader">Polls Menu</h2>
+  <h2 id="page-title" class="large-8 small-centered columns subheader">
+    Your Polls
+  </h2>
   <ul class="button-group round">
-    <li><%= link_to "Create Poll", new_question_set_path, class: "tiny button alert"%></li>
+    <li>
+      <%= link_to "Create Poll",
+        new_question_set_path,
+        class: "tiny button alert" %>
+    </li>
   </ul>
 </div>
 
@@ -16,11 +22,20 @@
         </div>
         <div class="right">
           <ul class="stack-for-small radius button-group">
-            <li><%= link_to "Review", question_set, class: "button" %>
+            <li>
+              <%= link_to "Review",
+                question_set,
+                class: "button" %>
             </li>
-            <li><%= link_to "Edit", edit_question_set_path(question_set), class: "button" %>
+            <li>
+              <%= link_to "Edit",
+                edit_question_set_path(question_set),
+                class: "button" %>
             </li>
-            <li><%= link_to "Present!", question_set_questions_path(question_set), class: "button"%>
+            <li>
+              <%= link_to "Present!",
+                question_set_questions_path(question_set),
+                class: "button" %>
             </li>
           </ul>
         </div>

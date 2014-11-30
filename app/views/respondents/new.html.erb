@@ -1,18 +1,31 @@
-<% provide(:title, "Respond Here") %>
-<h1>Respond</h1>
+<% provide(:title, "Respond") %>
 
-<div class="center">
-  <div class="login_form">
-
-    <%= form_for(:respondent) do |f| %>
-
-      <%= f.label :poll_title %>
-      <%= f.text_field :title %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.submit "Take Poll!", class: 'flow_button' %>
-    <% end %>
-  </div>
+<div id="top-row" class="row">
+  <h2 id="page-title" class="large-8 small-centered columns subheader">
+    Respond
+  </h2>
 </div>
+
+<%= form_for(:respondent) do |f| %>
+
+  <div class="row">
+    <div class="large-8 small-centered columns">
+      <%= f.label :poll_title, "Poll Title" %>
+      <%= f.text_field :title %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-8 small-centered columns">
+      <%= f.label :password, "Poll Password" %>
+      <%= f.password_field :password %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-2 small-centered columns">
+      <%= f.submit "Poll", class: 'button radius' %>
+    </div>
+  </div>
+
+<% end %>

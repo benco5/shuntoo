@@ -1,20 +1,21 @@
 <% provide(:title, "Home") %>
 
-<div id="welcome_unit">
-  <div id="welcome_color_block"></div>
-  <div id="welcome_content">
-    <h1>Shuntoo</h1>
-    <ul>
-      <li>Lightweight</li>
-      <li>Real-time</li>
-      <li>Convenient</li>
+<div class="row">
+  <div id="welcome-panel" class="large-6 large-offset-9 small-centered columns">
+    <h1 class="small-12 small-centered columns">Shuntoo</h1>
+    <h3>Real-time audience polling</h3>
+    <ul class="small-12 small-centered columns">
+      <li>Presentation mode</li>
+      <li>Multiple-choice format</li>
+      <li>Lightweight convenience</li>
+      <li>Real-time updates</li>
+      <h5>...and more!</h5>
     </ul>
-    <h2>Live, real-time polling for live, real-time audiences!</h2>
-    <%= link_to signup_path, id: "signup_button" do %>
+
+    <%= link_to signup_path, class: "button radius" do %>
       <div><%= "Sign up now!" %></div>
     <% end %>
   </div>
-  
 </div>
 
 

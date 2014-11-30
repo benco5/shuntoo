@@ -13,7 +13,11 @@
       </li>
     </ul>
 
+
     <section class="top-bar-section">
+      <ul class"left">
+        <li><%= link_to "Respond Here!", respond_path %></li>
+      </ul>
       <ul class="right">
         <% if signed_in? %>
           <li><%= link_to "Home", menu_path %></li>
@@ -24,11 +28,10 @@
         <li><%= link_to "Help",   help_path %></li>
         <li><%= link_to "Contact",  "#"  %></li>
         <% if signed_in? %>
-<!--           <li class="button">Account</li>
-            <div class="dropdown"> -->
-                <li><%= link_to "Settings", '#' %></li>
-                <li><%= link_to "Logout", logout_path, method: "delete" %></li>
-<!--             </div> -->
+          <li><%= link_to "Settings", '#' %></li>
+          <li><%= link_to "Logout", logout_path,
+            method: "delete" %>
+          </li>
         <% else %>
           <li><%= link_to "Login",  login_path %></li>
         <% end %>

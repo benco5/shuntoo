@@ -22,11 +22,11 @@
         prompt: "Please select a format" %>
     </div><br />
 
-
-    <div class="small-3 columns right">
+    <%= hidden_tag_if(params[:action] == "new", :div, class: 'small-3 columns right') do %>
       <%= f.check_box :_destroy %>
       <%= f.label :_destroy, "Remove Question", class: "inline-right" %>
-    </div>
+    <% end %>
+
   </div>
 
 </fieldset>
