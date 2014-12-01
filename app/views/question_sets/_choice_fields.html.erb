@@ -1,0 +1,14 @@
+<div class="choice row collapse" >
+  <div class="large-1 columns inline left">
+    <%= f.label :content, "Choice" %>
+  </div>
+  <div class="large-9 small-9 columns">
+    <%= f.text_field :content %>
+  </div>
+
+  <%= hidden_tag_if(params[:action] == "new", :div) do %>
+    <%= f.hidden_field :_destroy %>
+    <%= link_to "remove", '#', class: "remove_fields inline-right" %>
+  <% end %>
+</div>
+

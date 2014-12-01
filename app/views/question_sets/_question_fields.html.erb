@@ -1,5 +1,4 @@
 <fieldset>
-
   <div class="row">
     <div class="large-12 columns">
       <%= f.label :content, "Question" %>
@@ -9,24 +8,28 @@
     </div>
   </div>
 
-
   <%= f.fields_for :choices do |builder| %>
-    <%= render 'question_sets/answer_fields', f: builder %>
+    <%= render 'question_sets/choice_fields', f: builder %>
   <% end %>
 
+  <%= link_to_add_fields "Add Choice(s)", f, :choices %> 
+   
+
   <div class="row">
+    <br />
     <div class="large-4 columns">
       <%= f.label 'Question format:' %>
       <%= f.select :question_format_id,
         options_for_select(@question_formats.reverse.map{ |format| [format.name, format.id] }), 
         prompt: "Please select a format" %>
-    </div><br />
+    </div>
 
     <%= hidden_tag_if(params[:action] == "new", :div, class: 'small-3 columns right') do %>
+
       <%= f.check_box :_destroy %>
       <%= f.label :_destroy, "Remove Question", class: "inline-right" %>
     <% end %>
-
   </div>
+
 
 </fieldset>
