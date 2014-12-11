@@ -6,8 +6,17 @@ class QuestionSet < ActiveRecord::Base
 
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| 
    a[:content].blank? }, allow_destroy: true
-  
-  validates :title, presence: true, uniqueness: true
+
+  # Limit title to alphanumeric and spaces.
+  VALID_QUESTION_SET_TITLE_REGEX = %r(\A[a-z0-9]+[a-z0-9 ]+[a-z0-9]\Z)i
+  validates :title, presence: true,
+                    uniqueness: true,
+                    length: { minimum: 5, maximum: 30,
+                    message: 'keep it short (5 to 30 characters) and sweet (i.e., simple)'},
+                    format: { with: VALID_QUESTION_SET_TITLE_REGEX,
+                    message: 'letters, numbers and spaces only please. less is (sometimes) more.'}
+
+  validates :user_id, :response_token, presence: true
 
   def first_question
     questions.first

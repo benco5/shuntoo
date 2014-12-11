@@ -45,3 +45,10 @@
       <% end %>
     </ol>
   <% end %>
+
+  <!-- Shows partial with modal if new response token is set-->
+<% if session[:show_modal] == true %>                          
+  <%= render 'question_sets/response_token_modal',
+    question_set: @question_set %>
+  <% session.delete(:show_modal) %>
+<% end %>

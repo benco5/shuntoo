@@ -4,6 +4,7 @@ class QuestionsControllerTest < ActionController::TestCase
   def setup
     @current_user = users(:bob)
     session[:user_id] = @current_user.id
+    session[:response_tokens] ||= {}
     @question_set = question_sets(:one)
   end
 

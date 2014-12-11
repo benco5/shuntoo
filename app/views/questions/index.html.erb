@@ -2,7 +2,7 @@
 
 <div id="top-row" class="row">
   <h2 id="page-title" class="large-10 small-centered columns subheader">
-    <%= @question_set.title %>
+    <%= link_to @question_set.title, '#', data: {:'reveal-id' => "response_token_modal"} %>
   </h2>
 </div>
        
@@ -18,3 +18,8 @@
 <div class="pagination-centered">
   <%= will_paginate @questions, renderer: FoundationPagination::Rails %>
 </div>
+
+<%= render 'question_sets/response_token_modal' %>
+
+<%= link_to "Response Login Info", '#', class: "button",
+    data: { :'reveal-id' => "response_token_modal" } %>

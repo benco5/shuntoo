@@ -3,11 +3,14 @@
 one:
   title: Topic1
   user: bob
+  response_digest: <%= QuestionSet.digest('token') %>
 
 two:
   title: Topic2
   user: bob
+  response_digest: <%= QuestionSet.digest('token') %>
 
 three:
   title: Topic3
   user: jim
+  response_digest: <%= QuestionSet.digest('token') %>

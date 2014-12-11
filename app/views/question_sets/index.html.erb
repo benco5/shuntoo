@@ -17,10 +17,15 @@
   <ol>
     <% @question_sets.each do |question_set| %>
       <div id="poll-panel" class="panel clearfix">
-        <div class="large-6 columns left">
-          <h3><%= question_set['title'] %></h3>
+        <div class="large-1 columns right delete_link">
+          <%= render 'shared/delete_object',
+              object: question_set,
+              object_description: question_set.title %>
         </div>
-        <div class="right">
+        <div class="large-8 small-centered columns">
+          <h3 class="text-center"><%= question_set['title'] %></h3>
+        </div>
+        <div class="large-12 small-centered columns">
           <ul class="stack-for-small radius button-group">
             <li>
               <%= link_to "Review",
@@ -30,6 +35,12 @@
             <li>
               <%= link_to "Edit",
                 edit_question_set_path(question_set),
+                class: "button" %>
+            </li>
+            <li>
+              <%= link_to "Reset Password",
+                reset_response_token_question_set_path(question_set),
+                method: :post,
                 class: "button" %>
             </li>
             <li>
@@ -43,3 +54,11 @@
     <% end %>
   </ol>
 </div>
+
+<!-- Shows partial with modal if new response token is set-->
+<% if session[:show_modal] == true %>                          
+  <%= render 'question_sets/response_token_modal',
+    question_set: @question_set %>
+  <% session.delete(:show_modal) %>
+<% end %>
+

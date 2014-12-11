@@ -17,7 +17,21 @@ $white:       #fff;
 }
 
 #poll-panel {
-  padding: rem-calc(20) rem-calc(40) rem-calc(5) rem-calc(20);
+  padding: rem-calc(20) rem-calc(0) rem-calc(5) rem-calc(0);
+  .large-12.columns {  /* applies to the div which has the both classes */
+    text-align: center;
+  }
+  ul.button-group{
+    display: inline-block;
+  }
+  .delete_link {
+    text-align: right;
+    padding-right: 10px;
+    margin-top: -15px;
+    a {
+      color: $oil;
+    }
+  }
 }
 
 #question-panel {
@@ -144,8 +158,8 @@ footer {
   padding: 1em;
   margin-bottom: 2em;
   font: bold medium sans-serif;
-  color: red;
-  background-color: #FF7B7B;
+  color: white;
+  background-color: red;
 }
 
 #error_explanation {

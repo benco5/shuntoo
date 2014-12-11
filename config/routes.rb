@@ -6,6 +6,10 @@ Shuntoo::Application.routes.draw do
   get 'signup' => 'users#new'
   resources :users
   resources :question_sets do
+    member do
+      # post 'reset_response_token/question_set', :reset_response_token
+      post 'reset_response_token'
+    end
     resources :questions
   end
   resources :responses, only: [:index, :new, :create, :delete]

@@ -1,0 +1,36 @@
+<div id="response_token_modal" class="reveal-modal" data-reveal>
+
+  <% question_set = question_set || @question_set %>
+
+  <% if session[:response_tokens].has_key?(question_set.id) %>
+    <div class="row">
+      <h2 class="subheader">Please visit <em style="color:black">Shuntoo.com</em>
+        to
+        <span class="button large alert radius">Respond</span>
+        with ...
+      </h2>
+    </div>
+    <div class="row">
+      <div class="large-8 small-centered columns">
+        <h3 class="subheader">
+          Poll Name:
+          <span class="large-offset-1" style="color:black">
+            <%= question_set.title %>
+          </span>
+        </h3>
+        <h3 class="subheader">
+          Poll Password:
+          <span class="large-offset-1" style="color:black">
+            <%= session[:response_tokens][question_set.id] %>
+          </span>
+        </h3>
+      </div>
+    </div>
+  <% else %>
+    <p>
+      Oops, if you've forgotten the password for this poll, you can reset it to a new one in the Menu. (Otherwise, the last issued password should still work.)
+    </p>
+  <% end %>
+  <a class="close-reveal-modal">&#215;</a>
+
+</div>

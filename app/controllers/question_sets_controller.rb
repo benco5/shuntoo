@@ -1,10 +1,24 @@
 class QuestionSetsController < ApplicationController
-  before_action :set_question_set, only: [:show, :edit, :update, :destroy]
+  before_action :set_question_set, only: [:reset_response_token, :show, :edit, :update, :destroy]
   before_action :set_question_formats, only: [:show, :new, :create, :edit, :update]
   
 
+  def reset_response_token
+    respond_to do |format|
+      if @question_set.remember
+        session_for_new_response_token
+        format.html { redirect_to :back }
+      else
+        format.html { redirect_to :back }
+      end
+    end
+  end
+
+
   def index
-    @question_sets = current_user.question_sets
+    @question_sets = current_user.question_sets.order('created_at DESC')
+    @question_set = QuestionSet.find_by(id: session[:question_set_id]) # Solely for modal, after token reset
+    session.delete(:question_set_id)
   end
 
 
@@ -33,11 +47,8 @@ class QuestionSetsController < ApplicationController
     respond_to do |format|
       if @question_set.save
         @question_set.remember
-        session[:question_set_id] = @question_set.id
-        format.html { redirect_to @question_set,
-                      notice: "Success!
-                      Please record your response-password:
-                      #{@question_set.response_token}" }
+        session_for_new_response_token
+        format.html { redirect_to menu_url(@question_set) }
       else
         format.html { render action: 'new' }
       end
@@ -59,7 +70,7 @@ class QuestionSetsController < ApplicationController
   def destroy
     @question_set.destroy
     respond_to do |format|
-      format.html { redirect_to question_sets_url }
+      format.html { redirect_to menu_url }
     end
   end
 
@@ -72,7 +83,7 @@ class QuestionSetsController < ApplicationController
 
 
     def question_set_params
-      params.require(:question_set).permit(:id, :title,
+      params.require(:question_set).permit(:id, :title, :user_id, :response_token,
         questions_attributes: [:id, :content, :_destroy, :question_format_id, 
         choices_attributes: [:id, :content, :_destroy]])
     end
