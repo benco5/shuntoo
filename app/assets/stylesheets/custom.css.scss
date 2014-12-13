@@ -1,5 +1,5 @@
 @import "foundation_and_overrides";
-
+@import 'foundation-icons';
 $welcome-panel-color:#e42e09;
 
 $black:       #000;
@@ -132,24 +132,58 @@ a.remove_fields {
 /* footer */
 
 footer {
-  bottom: 0;
-  position: relative;
-  margin-top: 20px;
-  margin-left: 10px;
-  margin-bottom: 40px;
-  color: $gray;
-  small {
-    float: left;
-  }
-  a {
-    text-decoration: none;
-    color: $grayDarker;
-      &:hover {
-      color: $gray;
-    }
+  background-color: white;
+}
+          
+.full-width {
+  max-width: 1400px;
+}
+
+.footer {
+  background-color: rgba(#333,0.5);
+  padding: 2rem 4rem;
+  text-align: center;
+  color: $jet;
+}
+.footer i {
+  font-size: 100px;
+}
+
+.footer h4 {
+  color: $white-smoke;
+  font-size: 1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 2.0rem;
+  margin-bottom: 10px;
+}
+
+.footer p, .footer a {
+  font-weight: 300;
+  font-size: .8em;
+  color: $jet;
+}
+
+@media only screen and (min-width: 40.063em) {
+  .footer .columns:nth-child(n+2) {
+    border-left: 1px solid $jet;
+    min-height: 280px;
   }
 }
 
+.footer-links {
+  list-style-type: none;
+}
+
+.footer-links li {
+  margin-top: .5em;
+}
+
+.copyright-line small a {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+   
 /* errors and alerts */
 
 .alert-notice {

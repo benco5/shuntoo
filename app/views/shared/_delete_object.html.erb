@@ -1,6 +1,8 @@
 <% if current_user?(object.user) %>
-  <%= link_to "X", object, method: :delete,
+  <%= link_to object, method: :delete,
     data: {
       confirm: "Are you sure you want to delete #{object_description}?"
-    } %>
+    }  do %>
+      <i class="fi-x"></i>
+  <% end %>
 <% end %>

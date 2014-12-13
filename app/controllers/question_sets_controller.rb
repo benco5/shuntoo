@@ -18,6 +18,7 @@ class QuestionSetsController < ApplicationController
   def index
     @question_sets = current_user.question_sets.order('created_at DESC')
     @question_set = QuestionSet.find_by(id: session[:question_set_id]) # Solely for modal, after token reset
+    session[:response_tokens] ||= {}
     session.delete(:question_set_id)
   end
 

@@ -13,6 +13,7 @@ gem 'will_paginate', '~> 3.0.7'
 gem 'jquery-turbolinks'
 gem 'foundation-rails'
 gem 'will_paginate-foundation'
+gem 'foundation-icons-sass-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
