@@ -3,15 +3,15 @@
     <div class="row full-width">
 
       <%= hidden_tag_if(set_body_class != 'static_pages', :div ) do %>
-        <div class="small-12 medium-3 large-4 columns">
+        <div class="small-12 medium-4 large-4 columns">
           <i class="fi-laptop"></i>
           <h4>Communicate More Effectively</h4>
         </div>
-        <div class="small-12 medium-3 large-4 columns">
+        <div class="small-12 medium-4 large-4 columns">
           <i class="fi-torsos-all"></i>
           <h4>Ask your audience about <br> what they know and think</h4>
         </div>
-        <div class="small-12 medium-3 large-4 columns">
+        <div class="small-12 medium-4 large-4 columns">
           <i class="fi-mobile-signal"></i>
           <h4>Help Us Help You</h4>
           <a href="#">FAQ's</a> |
@@ -20,12 +20,14 @@
         </div>
       <% end %>
 
-      <div class="copyright-line">
-        <small>
-          &copy;
-          <%= copyright_notice_year_range(2014) %>
-          <%= link_to 'Shuntoo', root_path %>  All Rights Reserved.
-        </small>
+        <div class="row full-width">
+          <div class="copyright-line large-12 columns">
+          <small>
+            &copy;
+            <%= copyright_notice_year_range(2014) %>
+            <%= link_to 'Shuntoo', root_path %>  All Rights Reserved.
+          </small>
+        </div>
       </div>
     </div>
   </div>

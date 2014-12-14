@@ -14,7 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require foundation
+
 //= require raphael
 //= require morris.min
 //= require foundation

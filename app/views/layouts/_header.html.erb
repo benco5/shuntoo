@@ -1,36 +1,30 @@
+<nav class="top-bar" data-topbar> <!-- role="navigation"> -->
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to "Shuntoo", root_path %></h1>
+    </li>
+    <li class="toggle-topbar menu-icon">
+      <% if signed_in? %>
+        <span><%= link_to "", menu_path %></span>
+      <% else %>
+        <span><%= link_to "", root_path %></span>
+      <% end %>
+    </li>
+  </ul>
 
-  <nav class="top-bar" data-topbar role="navigation">
-    <ul class="title-area">
-      <li class="name">
-        <h1><%= link_to "Shuntoo", root_path %></h1>
-      </li>
-      <li class="toggle-topbar menu-icon">
-        <% if signed_in? %>
-          <span><%= link_to "Menu", menu_path %></span>
-        <% else %>
-          <span><%= link_to "Home", root_path %></span>
-        <% end %>
-      </li>
+  <section class="top-bar-section">
+    <ul class"left">
+      <li><%= link_to "Respond Here!", respond_path %></li>
     </ul>
-
-    <section class="top-bar-section">
-      <ul class"left">
-        <li><%= link_to "Respond Here!", respond_path %></li>
-      </ul>
-      <ul class="right">
-        <% if signed_in? %>
-          <li><%= link_to "Menu", menu_path %></li>
-        <% else %>
-          <li><%= link_to "Home",   root_path %></li>
-        <% end %>
-        <% if signed_in? %>
-<!--      <li><%#= link_to "Settings", '#' %></li> -->
-          <li><%= link_to "Logout", logout_path,
-            method: "delete" %>
-          </li>
-        <% else %>
-          <li><%= link_to "Login",  login_path %></li>
-        <% end %>
-      </ul>
-    </section>
-  </nav>
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <% if signed_in? %>
+        <li><%= link_to "Menu", menu_path %></li>
+        <li><%= link_to "Logout", logout_path, method: "delete" %></li>
+      <% else %>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Login", login_path %></li>
+      <% end %>
+    </ul>
+  </section>
+</nav>

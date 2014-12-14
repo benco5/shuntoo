@@ -1,5 +1,5 @@
 @import "foundation_and_overrides";
-@import 'foundation-icons';
+@import "foundation-icons";
 $welcome-panel-color:#e42e09;
 
 $black:       #000;
@@ -9,7 +9,11 @@ $gray:        #555;
 $grayMediumLight: #eaeaea;
 $grayLight:   #999;
 $grayLighter: #eee;
-$white:       #fff;
+//$white:       #fff;
+
+.main_layout_row {
+  min-height: rem-calc(550);
+}
 
 .static_pages {
   background: url('lanterns.jpg') no-repeat center center;
@@ -109,6 +113,7 @@ a.remove_fields {
   border: 2px solid $ghost;
   text-align: center;
   margin-top: rem-calc(75);
+  margin-bottom: rem-calc(75);
   h1 {
     font-size: rem-calc(60);
     font-weight: bold;
@@ -126,6 +131,26 @@ a.remove_fields {
       list-style: disc;
     }
   }
+}
+
+/* topbar menu-icon fix */
+.top-bar .toggle-topbar.menu-icon a:after {
+    box-shadow: 0 10px 0 1px #FFFFFF, 0 16px 0 1px #FFFFFF, 0 22px 0 1px #FFFFFF;
+    content: "";
+    display: block;
+    height: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 16px;
+}
+.top-bar .toggle-topbar.menu-icon a {
+    color: #FFFFFF;
+    height: 34px;
+    line-height: 33px;
+    padding: 0 25px 0 0;
+    margin-right: rem-calc(15);
+    position: relative;
 }
 
 
@@ -179,6 +204,10 @@ footer {
   margin-top: .5em;
 }
 
+div.copyright-line.columns {
+  border-left: none;
+  min-height: none;
+}
 .copyright-line small a {
   font-size: 1.1em;
   font-weight: bold;

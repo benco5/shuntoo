@@ -40,6 +40,13 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  # Redirects to login if user tries to access an unauthorized page
+  def signed_in_user
+    unless signed_in?
+      redirect_to login_url, notice: "Please sign in."
+    end
+  end
+
   # Updates/sets user digest to nil in the db and clears ID and token cookies
   def forget(user)
     user.forget

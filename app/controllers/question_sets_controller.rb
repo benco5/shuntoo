@@ -1,4 +1,5 @@
 class QuestionSetsController < ApplicationController
+  before_action :signed_in_user
   before_action :set_question_set, only: [:reset_response_token, :show, :edit, :update, :destroy]
   before_action :set_question_formats, only: [:show, :new, :create, :edit, :update]
   

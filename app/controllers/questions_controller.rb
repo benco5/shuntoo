@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :signed_in_user
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :set_question_formats, only: [:index, :show, :new, :create, :edit, :update]
   before_action :set_question_format, only: [:show, :new, :edit, :update]
