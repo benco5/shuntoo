@@ -1361,8 +1361,8 @@ $panel-padding: rem-calc(20);
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: rgba(#333,0.5);
-$topbar-bg: $topbar-bg-color;
+// $topbar-bg-color: $oil; //rgba(#333,0.5);
+// $topbar-bg: $topbar-bg-color;
 
 // Height and margin
 // $topbar-height: 45px;
@@ -1373,7 +1373,7 @@ $topbar-bg: $topbar-bg-color;
 // $topbar-title-font-size: rem-calc(17);
 
 // Style the top bar dropdown elements
-$topbar-dropdown-bg: none;
+//$topbar-dropdown-bg: $topbar-bg-color; //none;
 // $topbar-dropdown-link-color: $white;
 // $topbar-dropdown-link-bg: $oil;
 // $topbar-dropdown-link-weight: $font-weight-normal;
