@@ -3,17 +3,13 @@
 <div class="row">
   <div id="welcome-panel" class="large-6 large-offset-9 medium-8 small-12 small-centered columns">
     <h1 class="small-12 small-centered columns">Shuntoo</h1>
-    <h3>Real-time audience polling</h3>
-    <ul class="small-12 small-centered columns">
-      <li>Presentation mode</li>
-      <li>Multiple-choice format</li>
-      <li>Lightweight convenience</li>
-      <li>Real-time updates</li>
-      <h5>...and more!</h5>
-    </ul>
-
+    <h3 class="large-10 small-centered columns">Live audience polling!</h3>
+    <%= link_to respond_path, class: "button radius" do %>
+      <div><%="Respond"%></div>
+    <% end %>
+    <h5>-or-</h5>
     <%= link_to signup_path, class: "button radius" do %>
-      <div><%= "Sign up now!" %></div>
+      <div><%="Sign up!"%></div>
     <% end %>
   </div>
 </div>

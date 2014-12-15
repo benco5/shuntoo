@@ -109,27 +109,34 @@ a.remove_fields {
     $adjust:true
   );
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  //min-height: rem-calc(400);
+  margin-top: rem-calc(75);
+  margin-bottom: rem-calc(75);
+  padding-top: rem-calc(30);
+  padding-bottom: rem-calc(30);
   border-radius: 10px;
   border: 2px solid $ghost;
   text-align: center;
-  margin-top: rem-calc(75);
-  margin-bottom: rem-calc(75);
+  .button {
+    border: 1px solid $ghost;
+  }
   h1 {
     font-size: rem-calc(60);
     font-weight: bold;
   }
   h3 {
-    font-style: oblique;
-  }
-  ul {
+    margin-bottom: rem-calc(20);
+    padding-top: 15px;
+    padding-bottom: 15px;
     border-top: 1px solid $ghost;
     border-bottom: 1px solid $ghost;
-    padding: rem-calc(10);
-    li {
-      font-size: rem-calc(18);
-      text-transform: uppercase;
-      list-style: disc;
-    }
+    font-style: oblique;
+  }
+  h5 {
+    margin-top: -10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
   }
 }
 
