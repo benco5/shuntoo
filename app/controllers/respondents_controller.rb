@@ -11,9 +11,10 @@ class RespondentsController < ApplicationController
     respond_to do |format|
       if @question_set.authenticated?(params[:respondent][:password])
         session[:question_set_id] = @question_set.id
-        format.html { redirect_to responses_path }
+        session[:question_id] = @question_set.questions.first.id
+        format.html { redirect_to new_response_path }
       else
-        flash.now[:danger] = 'Invalid poll/password combo.'
+        flash.now[:danger] = "Dang! That doesn't look right."
         format.html { render action: 'new' }
       end
     end

@@ -1,27 +1,17 @@
-<% provide(:title, "Respond to poll!") %>
-<h1>Poll Response</h1>
-
-<% if false %>
-<!-- <div class="center">
-  <div class="login_form">
-
-    <%= form_for(:session, url: login_path) do |f| %>
-
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.label :remember_me, class: "checkbox" do %>
-        <%= f.check_box :remember_me %>
-        <span>Remember me on this computer</span>
+<% provide(:title, "Respond") %>
+<h1><%= @question_set.title %></h1>                                    
+<div class="center">              
+  <ol>
+    <li class="question_box"> 
+      <h3><%= @question.content %></h3>
+      <% @responses = build_responses_array_for(@question) %>
+      <%= content_tag :div, "", id: "responses_chart",
+        data: { responses: response_chart_data_for(@question) } %>
+      <% if @question.question_format.name == "Multiple Answer" %>
+        <%= render 'shared/checkbox_response_form', responses: @responses %>
+      <% elsif @question.question_format.name == "Single Answer" %>
+        <%= render 'shared/radio_response_form', responses: @responses  %>
       <% end %>
-
-      <%= f.submit "Log in", class: 'flow_button' %>
-    <% end %>
-
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
-  </div>
-</div> -->
-<% end %>
+    </li>
+  </ol>
+</div>

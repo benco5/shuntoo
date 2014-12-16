@@ -11,5 +11,13 @@ class Question < ActiveRecord::Base
 
   validates :content, :question_set, :question_format_id, presence: true  
 
-  self.per_page = 1
+  self.per_page = 1 # Sets number of questions / pagination page to 1
+
+  def previous
+    Question.where(["id < ?", id]).last
+  end
+
+  def next
+    Question.where(["id > ?", id]).first
+  end
 end

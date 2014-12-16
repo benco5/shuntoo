@@ -15,6 +15,8 @@ class ResponsesController < ApplicationController
   end
 
   def new
+    @question_set = QuestionSet.find(session[:question_set_id])
+    @question = Question.find(session[:question_id])
   end
 
   def create
@@ -46,22 +48,15 @@ class ResponsesController < ApplicationController
       end
     end
 
-    def respond_to_create                                     # Standard issue respond_to, but
-     respond_to do |format|                                   # must be executed after (potentially)
-        if @response.save                                     # multiple create actions resulting 
-            format.html { redirect_to :back }                 # from array of checkbox responses
-        else
-          format.html { render action: 'new' }
-        end
-      end
-    end
-
-    def check_box_responses                                   # Enumerate through array of responses
-      if params["response"]["responses"]                      # returned by checkbox submissions,
-        action = params[:action]                              # sets params for each response
-        p = params                                            # and submits to create action.
-        h = params["response"]["responses"]                   # When all responses have been inserted,
-        h.each do |response|                                  # calls respond_to_create
+    # Enumerate through array of responses returned by checkbox submissions,
+    # sets params for each response and submits to create action.
+    # When all responses have been inserted, calls respond_to_create
+    def check_box_responses                                   
+      if params["response"]["responses"]                    
+        action = params[:action]                              
+        p = params                                            
+        h = params["response"]["responses"]                   
+        h.each do |response|                                 
           p["response"] = response
           unless params["response"]["choice_id"].nil?
             params
@@ -72,7 +67,30 @@ class ResponsesController < ApplicationController
         create
       end
       respond_to_create
-    end  
+    end
+
+    # Standard issue respond_to, but must be executed after (potentially)
+    # multiple create actions resulting from array of checkbox responses
+    def respond_to_create
+      @question_set = QuestionSet.find(session[:question_set_id])
+      @question = Question.find(session[:question_id])                                      
+      respond_to do |format|                                   
+        if @response.save
+          if @question == @question_set.questions.last
+            session.delete
+            format.html { redirect_to root_url,
+              notice: "Thanks for your input. Come again soon!" }
+          else
+            session[:question_id] = @question.next.id              
+            format.html { redirect_to new_response_path }
+          end                                    
+        else
+          session.delete 
+          format.html { redirect_to root_url,
+            notice: "Houston, there was a problem :(" }
+        end
+      end
+    end
 
     def set_response
       @response = Response.find(params[:id])
