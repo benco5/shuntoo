@@ -16,7 +16,7 @@ class QuestionSet < ActiveRecord::Base
                     format: { with: VALID_QUESTION_SET_TITLE_REGEX,
                     message: 'letters, numbers and spaces only please. less is (sometimes) more.'}
 
-  validates :user_id, :response_token, presence: true
+  validates :user_id, presence: true
 
   def first_question
     questions.first

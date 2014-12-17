@@ -1,17 +1,19 @@
-<% provide(:title, "Respond") %>
-<h1><%= @question_set.title %></h1>                                    
-<div class="center">              
-  <ol>
-    <li class="question_box"> 
-      <h3><%= @question.content %></h3>
-      <% @responses = build_responses_array_for(@question) %>
-      <%= content_tag :div, "", id: "responses_chart",
-        data: { responses: response_chart_data_for(@question) } %>
-      <% if @question.question_format.name == "Multiple Answer" %>
-        <%= render 'shared/checkbox_response_form', responses: @responses %>
-      <% elsif @question.question_format.name == "Single Answer" %>
-        <%= render 'shared/radio_response_form', responses: @responses  %>
-      <% end %>
-    </li>
-  </ol>
+<% provide(:title, 'Respond') %>
+
+<div id="top-row" class="row">
+  <h2 id="page-title" class="large-8 small-centered columns subheader">
+    <%= @question_set.title %>
+  </h2>
+</div><br />
+                                 
+<% @responses = build_responses_array_for(@question) %>
+<div id="question-panel" class="panel">
+  <div class="row">
+    <h3><%= @question.content %></h3>
+  </div>
+  <% if @question.question_format.name == "Multiple Answer" %>
+    <%= render 'shared/checkbox_response_form', responses: @responses %>
+  <% elsif @question.question_format.name == "Single Answer" %>
+    <%= render 'shared/radio_response_form', responses: @responses  %>
+  <% end %>
 </div>

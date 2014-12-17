@@ -12,7 +12,7 @@ Shuntoo::Application.routes.draw do
     end
     resources :questions
   end
-  resources :responses, only: [:index, :new, :create, :delete]
+  resources :responses, only: [:new, :create, :delete]
   root  'static_pages#home'
   match '/about', to: 'static_pages#about', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'
